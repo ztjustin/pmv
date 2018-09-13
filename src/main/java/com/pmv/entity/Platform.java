@@ -35,7 +35,7 @@ public class Platform implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "platform")
     private PlatformDetail platformDetail;
 		
-	@OneToMany(mappedBy="annotation")
+	@OneToMany(mappedBy="platform")
 	private List<Annotation> annotations;
 	
 	/*GETTERS AND SETTERS*/

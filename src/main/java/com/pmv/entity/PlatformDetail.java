@@ -3,6 +3,7 @@ package com.pmv.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="platform_detail")
 public class PlatformDetail implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -24,7 +28,7 @@ public class PlatformDetail implements Serializable {
 	@JoinColumn(name="hard_disk_id", nullable=false)
 	private HardDisk hardDisk;
 	
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
 	
