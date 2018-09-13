@@ -27,8 +27,41 @@ public class OperatingSystem implements Serializable {
     
 	@Column(name = "name_System", nullable = false, length= 45)
 	private String nameSystem;
-	
+
 	/*GETTERS AND SETTERS*/
 	
+	public OperatingSystem() {
+		super();
+	}
 
+	public OperatingSystem(TypeSystem typeSystem, String nameSystem) {
+		super();
+		this.typeSystem = typeSystem;
+		this.nameSystem = nameSystem;
+	}
+
+	public int getOperatingSystemId() {
+		return operatingSystemId;
+	}
+
+	public void setOperatingSystemId(int operatingSystemId) {
+		this.operatingSystemId = operatingSystemId;
+	}
+
+	public TypeSystem getTypeSystem() {
+		return typeSystem;
+	}
+
+	public void setTypeSystem(TypeSystem typeSystem) {
+		this.typeSystem = typeSystem;
+	}
+
+	public String getNameSystem() {
+		return nameSystem;
+	}
+
+	public void setNameSystem(String nameSystem) {
+		this.nameSystem = nameSystem;
+	}
+	
 }

@@ -20,8 +20,8 @@ public class HardDisk implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="hard_disk", unique = true, nullable = false)
-	private int hardDisk;
+	@Column(name="hard_disk_id", unique = true, nullable = false)
+	private int hardDiskId;
 	
 	@Column(name = "serial", nullable = false)
 	private String serial;
@@ -29,8 +29,41 @@ public class HardDisk implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="operating_system_id", nullable=false)
 	private OperatingSystem operatingSystem;
-	
+
 	/*GETTERS AND SETTERS*/
 	
+	public HardDisk() {
+		super();
+	}
+
+	public HardDisk(String serial, OperatingSystem operatingSystem) {
+		super();
+		this.serial = serial;
+		this.operatingSystem = operatingSystem;
+	}
+
+	public int getHardDiskId() {
+		return hardDiskId;
+	}
+
+	public void setHardDiskId(int hardDiskId) {
+		this.hardDiskId = hardDiskId;
+	}
+
+	public String getSerial() {
+		return serial;
+	}
+
+	public void setSerial(String serial) {
+		this.serial = serial;
+	}
+
+	public OperatingSystem getOperatingSystem() {
+		return operatingSystem;
+	}
+
+	public void setOperatingSystem(OperatingSystem operatingSystem) {
+		this.operatingSystem = operatingSystem;
+	}
 
 }
