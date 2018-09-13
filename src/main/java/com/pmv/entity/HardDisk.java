@@ -1,8 +1,6 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,31 +13,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="annotation")
-public class Annotation implements Serializable {
+@Table(name="hard_disk")
+public class HardDisk implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="annotation_id", unique = true, nullable = false)
-	private int annotationId;
+	@Column(name="hard_disk", unique = true, nullable = false)
+	private int hardDisk;
 	
-	@Column(name = "date", nullable = false)
-	private LocalDate date;
-	
-	@Column(name = "time", nullable = false)
-	private LocalTime time;
-	
-	@Column(name = "description", nullable = false, length= 45)
-	private String description;
+	@Column(name = "serial", nullable = false)
+	private String serial;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="platform_id", nullable=false)
-	private Platform platform;
+	@JoinColumn(name="operating_system_id", nullable=false)
+	private OperatingSystem operatingSystem;
 	
 	/*GETTERS AND SETTERS*/
-	
 	
 
 }
