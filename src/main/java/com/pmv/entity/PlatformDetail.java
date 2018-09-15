@@ -1,9 +1,12 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +34,16 @@ public class PlatformDetail implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
+    
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "itp_id", nullable = false)
+    private Itp itp;
+    
+    @Enumerated(EnumType.STRING)
+    private Project project;
+    
+	@Column(name = "last_update", nullable = false)
+	private LocalDate lastUpdate;
 	
 	/*GETTERS AND SETTERS*/
     
@@ -38,34 +51,5 @@ public class PlatformDetail implements Serializable {
 		super();
 	}
 
-	public PlatformDetail(HardDisk hardDisk, Platform platform) {
-		super();
-		this.hardDisk = hardDisk;
-		this.platform = platform;
-	}
 
-	public int getPlatformDetailId() {
-		return platformDetailId;
-	}
-
-	public void setPlatformDetailId(int platformDetailId) {
-		this.platformDetailId = platformDetailId;
-	}
-
-	public HardDisk getHardDisk() {
-		return hardDisk;
-	}
-
-	public void setHardDisk(HardDisk hardDisk) {
-		this.hardDisk = hardDisk;
-	}
-
-	public Platform getPlatform() {
-		return platform;
-	}
-
-	public void setPlatform(Platform platform) {
-		this.platform = platform;
-	}
-	
 }
