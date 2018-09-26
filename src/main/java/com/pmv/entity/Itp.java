@@ -27,14 +27,40 @@ public class Itp implements Serializable {
 	
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "itp")
     private PlatformDetail platformDetail;
+	
+	/*GETTERS AND SETTERS*/
 
 	public Itp() {
 		super();
 	}
-	
-	/*GETTERS AND SETTERS*/
-	
-	
-	
 
+	public Itp(String nameItp) {
+		super();
+		this.nameItp = nameItp;
+	}
+
+	public int getItpId() {
+		return itpId;
+	}
+
+	public void setItpId(int itpId) {
+		this.itpId = itpId;
+	}
+
+	public String getNameItp() {
+		return nameItp;
+	}
+
+	public void setNameItp(String nameItp) {
+		this.nameItp = nameItp;
+	}
+
+	public PlatformDetail getPlatformDetail() {
+		return platformDetail;
+	}
+
+	public void setPlatformDetail(PlatformDetail platformDetail) {
+		this.platformDetail = platformDetail;
+	}
+	
 }

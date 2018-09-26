@@ -51,5 +51,61 @@ public class PlatformDetail implements Serializable {
 		super();
 	}
 
+	public PlatformDetail(HardDisk hardDisk, Platform platform, Itp itp, Project project, LocalDate lastUpdate) {
+		super();
+		this.hardDisk = hardDisk;
+		this.platform = platform;
+		this.itp = itp;
+		this.project = project;
+		this.lastUpdate = lastUpdate;
+	}
 
+	public int getPlatformDetailId() {
+		return platformDetailId;
+	}
+
+	public void setPlatformDetailId(int platformDetailId) {
+		this.platformDetailId = platformDetailId;
+	}
+
+	public HardDisk getHardDisk() {
+		return hardDisk;
+	}
+
+	public void setHardDisk(HardDisk hardDisk) {
+		this.hardDisk = hardDisk;
+	}
+
+	public Platform getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
+	}
+
+	public Itp getItp() {
+		return itp;
+	}
+
+	public void setItp(Itp itp) {
+		this.itp = itp;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public LocalDate getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(LocalDate lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+	
 }
