@@ -42,10 +42,10 @@ public class AuthenticationController {
 	/*En este controller debe de ir toda la logica de logeos, autentificacion y redirecciones*/
 
 	
-	@GetMapping({"/loginsuccess"})
-	public String loginCheck(){
-		return  "contacts";
-	}
+	@GetMapping({"/loginsuccess", "/"})
+    public String loginCheck() {
+		return "redirect:/index";
+    }
 	
 	
 	@GetMapping("/admin/logout")

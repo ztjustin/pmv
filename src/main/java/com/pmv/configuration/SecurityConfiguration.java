@@ -33,11 +33,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.anyRequest().authenticated()
 			.and()
 			
-			.formLogin().loginPage("/login").loginProcessingUrl("/loginCheck")
+			.formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
 			.usernameParameter("userName").passwordParameter("password")
 			.defaultSuccessUrl("/loginsuccess").permitAll()
 			.and()
-			.logout().logoutUrl("/logout").logoutSuccessUrl("/index?logout")
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
 			.permitAll();
 		
 		super.configure(http);

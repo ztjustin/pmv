@@ -57,7 +57,7 @@ public class AuthenticationServiceImpl implements UserDetailsService{
 
 		for (Role role : roles) {
 			LOG.info("EL ROLES ES:"+role.getName());
-			auths.add(new SimpleGrantedAuthority("ROLE_"+role.getName().toUpperCase()));
+			auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
 		}
 		
 		LOG.info("EL GrantedAuthority ES:"+auths.toString());
