@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getOne(String username) {
-		return userJpaRepository.getOne(username);
+	public User getOne(String userName) {
+		return userJpaRepository.findByUserName(userName);
 	}
 
 	@Override
