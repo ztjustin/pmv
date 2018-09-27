@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pmv.entity.Cpu;
 
-@Repository("CpuJpaRepository")
+@Repository("cpuJpaRepository")
 public interface CpuJpaRepository extends JpaRepository<Cpu,Serializable>  {
 	
 	

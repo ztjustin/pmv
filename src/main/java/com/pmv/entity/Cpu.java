@@ -3,8 +3,12 @@ package com.pmv.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cpu")
 public class Cpu implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -13,7 +17,7 @@ public class Cpu implements Serializable {
 	@Column(name="cpu_id", unique = true, nullable = false)
 	private int cpuId;
 	
-	@Column(name = "cpu-name", nullable = false, length= 45)
+	@Column(name = "cpu_name", nullable = false, length= 45)
 	private String cpuName;
 	
 	@Column(name = "qdf", nullable = false, length= 45)
