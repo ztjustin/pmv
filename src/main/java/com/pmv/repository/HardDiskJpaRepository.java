@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pmv.entity.HardDisk;
 
-@Repository("hardDiskRepository")
+@Repository("hardDiskJpaRepository")
 public interface HardDiskJpaRepository extends JpaRepository<HardDisk, Serializable> {
 	
 

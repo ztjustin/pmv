@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.OperatingSystem;
 import com.pmv.repository.OperatingSystemJpaRepository;
 import com.pmv.service.OperatingSystemService;
 
+@Service("operatingSystemServiceImpl")
 public class OperatingSystemServiceImpl implements OperatingSystemService {
 	
 	@Autowired

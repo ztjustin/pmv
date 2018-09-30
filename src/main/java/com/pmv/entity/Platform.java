@@ -31,6 +31,9 @@ public class Platform implements Serializable {
 	
     @Enumerated(EnumType.STRING)
     private StatusPlatform status;
+    
+    @Enumerated(EnumType.STRING)
+    private Department department;
 	
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "platform")
     private PlatformDetail platformDetail;
@@ -44,10 +47,11 @@ public class Platform implements Serializable {
 		super();
 	}
 
-	public Platform(String name, StatusPlatform status) {
+	public Platform(String name, StatusPlatform status, Department department) {
 		super();
 		this.name = name;
 		this.status = status;
+		this.department = department;
 	}
 
 	public int getPlatformId() {
@@ -89,5 +93,14 @@ public class Platform implements Serializable {
 	public void setAnnotations(List<Annotation> annotations) {
 		this.annotations = annotations;
 	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
 	
 }

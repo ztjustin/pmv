@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.HardDisk;
 import com.pmv.repository.HardDiskJpaRepository;
 import com.pmv.service.HardDiskService;
 
+@Service("hardDiskServiceImpl")
 public class HardDiskServiceImpl implements HardDiskService {
-	
 	
 	@Autowired
 	@Qualifier("hardDiskJpaRepository")

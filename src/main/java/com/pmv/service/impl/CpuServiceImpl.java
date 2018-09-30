@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.Cpu;
 import com.pmv.repository.CpuJpaRepository;
 import com.pmv.service.CpuService;
 
+@Service("cpuServiceImpl")
 public class CpuServiceImpl implements CpuService {
 	
 	@Autowired

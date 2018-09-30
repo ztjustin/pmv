@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.Annotation;
 import com.pmv.repository.AnnotationJpaRepository;
 import com.pmv.service.AnnotationService;
 
+@Service("annotationServiceImpl")
 public class AnnotationServiceImpl implements AnnotationService {
 	
 	@Autowired

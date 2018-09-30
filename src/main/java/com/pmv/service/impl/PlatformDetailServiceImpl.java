@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.PlatformDetail;
 import com.pmv.repository.PlatformDetailJpaRepository;
 import com.pmv.service.PlatformDetailService;
 
+@Service("platformDetailServiceImpl")
 public class PlatformDetailServiceImpl implements PlatformDetailService{
 	
 	@Autowired

@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.pmv.entity.Pch;
 import com.pmv.repository.PchJpaRepository;
 import com.pmv.service.PchService;
 
+@Service("pchServiceImpl")
 public class PchServiceImpl implements PchService{
 	
 	@Autowired
