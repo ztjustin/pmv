@@ -14,4 +14,7 @@ public interface PlatformDetailService {
 	
 	public abstract void delete(int platformDetailId);
 
+	public abstract PlatformDetail getPlatformDetailByPlatformId(int platformId);
+
+
 }

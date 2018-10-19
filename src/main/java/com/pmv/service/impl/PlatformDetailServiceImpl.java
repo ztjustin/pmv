@@ -37,4 +37,9 @@ public class PlatformDetailServiceImpl implements PlatformDetailService{
 		platformDetailJpaRepository.deleteById(platformDetailId);
 	}
 
+	@Override
+	public PlatformDetail getPlatformDetailByPlatformId(int platformId) {
+		return platformDetailJpaRepository.findPlatformDetailByPlatformId(platformId);
+	}
+
 }

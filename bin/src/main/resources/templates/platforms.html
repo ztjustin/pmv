@@ -37,28 +37,13 @@
 					<tr th:each="platform : ${platforms}">
 					     <td class="align-middle" th:text="${platform.name}"></td>
 					     <!-- IF CUSTOMER IS ANONYMOUS -->
-						 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='UP'}">
-						 	<button type="button" class="btn btn-success">
-								<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-							</button>
-						 </td>
-						 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='DOWN'}">
-						 	<button type="button" class="btn btn-danger">
-								<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							</button>
-						 </td>
-						 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='RUNNING'}">
-						 	<button type="button" class="btn btn-warning">
-								<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-							</button>
-						 </td>
+						 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='UP'}"><span th:text="Activo"></span></td>
+						 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='DOWN'}"><span th:text="Inactivo"></span></td>
 					     <td class="align-middle" th:text="${platform.department}"></td>
 					     <td>
-							<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
-							<button  type="button" class="btn btn-default">
+							<button type="button" class="btn btn-default">
 								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 							</button>
-							</a>
 
 							<button type="button" class="btn btn-danger">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
