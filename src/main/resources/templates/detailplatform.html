@@ -2,41 +2,134 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Backend Ninja - Add/modify Contact</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" 
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
 
-	<div class="jumbotron">
+	<div class="jumbotron" th:object="${platformDetail}">
 		<div class="container">
-			<h1 class="display-1">Platform Detail</h1>
-			<br/>
-		<div class="card border-secondary mb-3" style="max-width: 18rem;">
-		  <div class="card-header">Header</div>
-		  <div class="card-body text-secondary">
-		    <h5 class="card-title">Secondary card title</h5>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-		<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-		  <div class="card-header">Header</div>
-		  <div class="card-body">
-		    <h5 class="card-title">Info card title</h5>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
 		
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="card text-center">
+				  <div class="card-header">
+				    PMV
+				  </div>
+				  <div class="card-body">
+				    <h5 class="card-title"><span th:text="${platformDetail.platform.name}"></span></h5>
+				    <p class="card-text"><span th:text="${platformDetail.platform.department}"></span></p>
+				  </div>
+				  <div class="card-footer text-muted">
+				    Last Update Today
+				  </div>
+				</div>
+			  </div>
+			</div>
+			
+			<!-- Start of Row 1  -->
+			<div class="row">
+			
+			  <div class="col-sm-6">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">Hard Disks:</h5>
+			      </div>
+			    </div>
+
+				<div class="card" th:each="hardDisk : ${platformDetail.hardDisks}">
+				    <div class="card-header" id="headingOne">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${hardDisk.hardDiskId}" aria-expanded="true" aria-controls="collapseOne">
+				          <span th:text="${hardDisk.serial}"></span>
+				        </button>
+				      </h5>
+				    </div>
+				
+				    <div th:attr="id=''+${hardDisk.hardDiskId}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+				      <div class="card-body">
+				          <ul class="list-group">
+						    <li class="list-group-item list-group-item-success">Type: <span th:text="${hardDisk.operatingSystem.typeSystem}"></span></li>
+						    <li class="list-group-item list-group-item-success">System Name: <span th:text="${hardDisk.operatingSystem.nameSystem}"></span></li>
+						  </ul>
+				      </div>
+				    </div>
+				</div>
+		
+				<div class="card">
+				  <div class="card-body">
+				    <a href="#" class="btn btn-primary">Add Hard Disk</a>
+				  </div>
+				</div>
+				 
+				 
+			  </div>
+			  
+			  <div class="col-sm-6">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">CPU information:</h5>
+			        <p class="card-text">
+			        	        
+			        	<ul class="list-group">
+						  <li class="list-group-item list-group-item-primary">CPU Name: <span th:text="${platformDetail.cpu.cpuName}"></span></li>
+						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.cpu.cpuVisualId}"></span></li>
+						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.cpu.qdf}"></span></li>
+						</ul>		        
+			        
+			        </p>
+			       
+			        <a href="#" class="btn btn-primary">Edit CPU Information</a>
+			      </div>
+			    </div>
+			    
+			  </div>
+			</div>
+			
+			<!-- End of Row 1  -->
+			
+			<!-- End of Row 2  -->
+			<div class="row">
+			
+			  <div class="col-sm-6">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">PCH information:</h5>
+			        <p class="card-text">
+			        	<ul class="list-group">
+						  <li class="list-group-item list-group-item-primary">PCH Name: <span th:text="${platformDetail.pch.pchName}"></span></li>
+						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.pch.pchVisualId}"></span></li>
+						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.pch.qdf}"></span></li>
+						</ul>		        	             
+			        </p>
+			       
+			        <a href="#" class="btn btn-primary">Edit PCH Information</a>
+			      </div>
+			    </div>
+			    
+			  </div>
+			
+			</div>
+
 		</div>
 	</div>
+	
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

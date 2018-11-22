@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pmv.service.PlatformDetailService;
 import com.pmv.service.UserService;
 
+
 @Controller
 public class PlatformDetailController {
 	
@@ -27,14 +28,17 @@ public class PlatformDetailController {
 	@Qualifier("platformDetailServiceImpl")
 	private PlatformDetailService platformDetailServiceImpl;
 	
+	
 	@GetMapping({"/admin/platformDetail"})
     public ModelAndView index(@RequestParam(name="platformId",required = true) int platformId) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ModelAndView model = new ModelAndView("detailplatform");
 		model.addObject("username",user.getUsername());
-		model.addObject("platform",platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
-		LOG.info("Esta es el detalle de la plataforma " + platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId).toString());
+		model.addObject("platformDetail",platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
+		LOG.info("Esta es el detalle de la plataforma " + platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
 		return model;
     }
+	
+	
 
 }

@@ -2,6 +2,7 @@ package com.pmv.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,13 +28,12 @@ public class PlatformDetail implements Serializable {
 	@Column(name="platform_detail_id", unique = true, nullable = false)
 	private int platformDetailId;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="hard_disk_id", nullable=false)
-	private HardDisk hardDisk;
-	
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
+    
+	@OneToMany(mappedBy="platformDetail")
+	private List<HardDisk> hardDisks;
     
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "itp_id", nullable = false)
@@ -45,15 +45,24 @@ public class PlatformDetail implements Serializable {
 	@Column(name = "last_update", nullable = false)
 	private LocalDate lastUpdate;
 	
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "cpu_id", nullable = false)
+    private Cpu cpu;
+    
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "pch_id", nullable = false)
+    private Pch pch;
+	
+	
 	/*GETTERS AND SETTERS*/
     
 	public PlatformDetail() {
 		super();
 	}
 
-	public PlatformDetail(HardDisk hardDisk, Platform platform, Itp itp, Project project, LocalDate lastUpdate) {
+	public PlatformDetail(List<HardDisk> hardDisks, Platform platform, Itp itp, Project project, LocalDate lastUpdate) {
 		super();
-		this.hardDisk = hardDisk;
+		this.hardDisks = hardDisks;
 		this.platform = platform;
 		this.itp = itp;
 		this.project = project;
@@ -67,13 +76,13 @@ public class PlatformDetail implements Serializable {
 	public void setPlatformDetailId(int platformDetailId) {
 		this.platformDetailId = platformDetailId;
 	}
-
-	public HardDisk getHardDisk() {
-		return hardDisk;
+	
+	public List<HardDisk> getHardDisks() {
+		return hardDisks;
 	}
 
-	public void setHardDisk(HardDisk hardDisk) {
-		this.hardDisk = hardDisk;
+	public void setHardDisks(List<HardDisk> hardDisks) {
+		this.hardDisks = hardDisks;
 	}
 
 	public Platform getPlatform() {
@@ -107,5 +116,22 @@ public class PlatformDetail implements Serializable {
 	public void setLastUpdate(LocalDate lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
+	public Cpu getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(Cpu cpu) {
+		this.cpu = cpu;
+	}
+
+	public Pch getPch() {
+		return pch;
+	}
+
+	public void setPch(Pch pch) {
+		this.pch = pch;
+	}
 	
+		
 }

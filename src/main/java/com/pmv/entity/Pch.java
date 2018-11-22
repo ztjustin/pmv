@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,7 @@ public class Pch implements Serializable{
 	private int pchId;
 	
 	@Column(name = "pch_name", nullable = false, length= 45)
-	private String cpuName;
+	private String pchName;
 	
 	@Column(name = "qdf", nullable = false, length= 45)
 	private String qdf;
@@ -29,18 +31,23 @@ public class Pch implements Serializable{
 	@Column(name = "pch_visual_id", nullable = false, length= 45)
 	private String pchVisualId;
 	
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "pch")
+    private PlatformDetail platformDetail;
+	
 	/*GETTERS AND SETTERS*/
 
 	public Pch() {
 		super();
 	}
-
-	public Pch(String cpuName, String qdf, String pchVisualId) {
+	
+	public Pch(int pchId, String pchName, String qdf, String pchVisualId) {
 		super();
-		this.cpuName = cpuName;
+		this.pchId = pchId;
+		this.pchName = pchName;
 		this.qdf = qdf;
 		this.pchVisualId = pchVisualId;
 	}
+
 
 	public int getPchId() {
 		return pchId;
@@ -51,11 +58,11 @@ public class Pch implements Serializable{
 	}
 
 	public String getCpuName() {
-		return cpuName;
+		return pchName;
 	}
 
 	public void setCpuName(String cpuName) {
-		this.cpuName = cpuName;
+		this.pchName = cpuName;
 	}
 
 	public String getQdf() {
@@ -73,5 +80,22 @@ public class Pch implements Serializable{
 	public void setPchVisualId(String pchVisualId) {
 		this.pchVisualId = pchVisualId;
 	}
+
+	public PlatformDetail getPlatformDetail() {
+		return platformDetail;
+	}
+
+	public void setPlatformDetail(PlatformDetail platformDetail) {
+		this.platformDetail = platformDetail;
+	}
+
+	public String getPchName() {
+		return pchName;
+	}
+
+	public void setPchName(String pchName) {
+		this.pchName = pchName;
+	}
+	
 	
 }

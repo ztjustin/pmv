@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,9 @@ public class Cpu implements Serializable {
 	
 	@Column(name = "cpu_visual_id", nullable = false, length= 45)
 	private String cpuVisualId;
+	
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "cpu")
+    private PlatformDetail platformDetail;
 	
 	/*GETTERS AND SETTERS*/
 
@@ -71,6 +76,17 @@ public class Cpu implements Serializable {
 	public void setCpuVisualId(String cpuVisualId) {
 		this.cpuVisualId = cpuVisualId;
 	}
+
+	public PlatformDetail getPlatformDetail() {
+		return platformDetail;
+	}
+
+	public void setPlatformDetail(PlatformDetail platformDetail) {
+		this.platformDetail = platformDetail;
+	}
+	
+	
+	
 	
 	
 }
