@@ -45,7 +45,7 @@ public class User implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="role_id", nullable=false)
 	private Role role;
-
+	
 
 	public User() {
 		super();
@@ -117,6 +117,7 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
 	
 	/*//return the string code
     public String getImageEncoded() {

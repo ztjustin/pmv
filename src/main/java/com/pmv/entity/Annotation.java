@@ -1,8 +1,7 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,55 +25,41 @@ public class Annotation implements Serializable {
 	private int annotationId;
 	
 	@Column(name = "date", nullable = false)
-	private LocalDate date;
+	private Date date;
 	
-	@Column(name = "time", nullable = false)
-	private LocalTime time;
-	
-	@Column(name = "description", nullable = false, length= 45)
+	@Column(name = "description", nullable = false, length= 500)
 	private String description;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="platform_id", nullable=false)
 	private Platform platform;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="username", nullable=false)
+	private User user;
+	
+	
 	/*GETTERS AND SETTERS*/
 	
 	public Annotation() {
 		super();
 	}
-
-	public Annotation(LocalDate date, LocalTime time, String description, Platform platform) {
+	
+	public Annotation(Date date, String description, Platform platform) {
 		super();
 		this.date = date;
-		this.time = time;
 		this.description = description;
 		this.platform = platform;
 	}
-
+	
 	public int getAnnotationId() {
 		return annotationId;
 	}
-
+	
 	public void setAnnotationId(int annotationId) {
 		this.annotationId = annotationId;
 	}
 
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public LocalTime getTime() {
-		return time;
-	}
-
-	public void setTime(LocalTime time) {
-		this.time = time;
-	}
 
 	public String getDescription() {
 		return description;
@@ -91,5 +76,24 @@ public class Annotation implements Serializable {
 	public void setPlatform(Platform platform) {
 		this.platform = platform;
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
 
 }

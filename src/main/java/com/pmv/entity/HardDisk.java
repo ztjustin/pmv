@@ -27,6 +27,9 @@ public class HardDisk implements Serializable {
 	@Column(name = "serial", nullable = false)
 	private String serial;
 	
+	@Column(name = "hold", nullable = false)
+	private Boolean hold;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="operating_system_id", nullable=false)
 	private OperatingSystem operatingSystem;
@@ -42,11 +45,12 @@ public class HardDisk implements Serializable {
 	}
 	
 
-	public HardDisk(String serial, OperatingSystem operatingSystem, PlatformDetail platformDetail) {
+	public HardDisk(String serial, OperatingSystem operatingSystem, PlatformDetail platformDetail,Boolean hold) {
 		super();
 		this.serial = serial;
 		this.operatingSystem = operatingSystem;
 		this.platformDetail = platformDetail;
+		this.hold = hold;
 	}
 
 
@@ -82,6 +86,16 @@ public class HardDisk implements Serializable {
 
 	public void setPlatformDetail(PlatformDetail platformDetail) {
 		this.platformDetail = platformDetail;
+	}
+
+
+	public Boolean getHold() {
+		return hold;
+	}
+
+
+	public void setHold(Boolean hold) {
+		this.hold = hold;
 	}
 	
 

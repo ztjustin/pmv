@@ -41,6 +41,54 @@
 			  
 			    <div class="card">
 			      <div class="card-body">
+			        <h5 class="card-title">PCH information:</h5>
+			        <p class="card-text">
+			        	<ul class="list-group">
+						  <li class="list-group-item list-group-item-primary">PCH Name: <span th:text="${platformDetail.pch.pchName}"></span></li>
+						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.pch.pchVisualId}"></span></li>
+						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.pch.qdf}"></span></li>
+						</ul>		        	             
+			        </p>
+			       
+			        <a href="#" class="btn btn-primary">Edit PCH Information</a>
+			      </div>
+			    </div>	
+			    			    
+			    
+			  </div>
+			  
+			  <div class="col-sm-6">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">CPU information:</h5>
+			        <p class="card-text">
+			        	        
+			        	<ul class="list-group">
+						  <li class="list-group-item list-group-item-primary">CPU Name: <span th:text="${platformDetail.cpu.cpuName}"></span></li>
+						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.cpu.cpuVisualId}"></span></li>
+						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.cpu.qdf}"></span></li>
+						</ul>		        
+			        
+			        </p>
+			       
+			        <a href="#" class="btn btn-primary">Edit CPU Information</a>
+			      </div>
+			    </div>
+			    	    
+			  </div>
+			</div>
+			
+			<!-- End of Row 1  -->
+			
+			<!-- End of Row 2  -->
+			<div class="row">
+			
+			  
+			  <div class="col-sm-12">
+			  
+			    <div class="card">
+			      <div class="card-body">
 			        <h5 class="card-title">Hard Disks:</h5>
 			      </div>
 			    </div>
@@ -49,8 +97,10 @@
 				    <div class="card-header" id="headingOne">
 				      <h5 class="mb-0">
 				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${hardDisk.hardDiskId}" aria-expanded="true" aria-controls="collapseOne">
-				          <span th:text="${hardDisk.serial}"></span>
+				          <span th:text="'Serial Disk: ' + ${hardDisk.serial}"></span>
 				        </button>
+				         <a href="#" th:if="${hardDisk.hold == true}" class="badge badge-success">On platform</a>
+				         <a href="#" th:if="${hardDisk.hold != true}" class="badge badge-secondary">On Hold</a>
 				      </h5>
 				    </div>
 				
@@ -72,51 +122,51 @@
 				 
 				 
 			  </div>
-			  
-			  <div class="col-sm-6">
-			  
-			    <div class="card">
-			      <div class="card-body">
-			        <h5 class="card-title">CPU information:</h5>
-			        <p class="card-text">
-			        	        
-			        	<ul class="list-group">
-						  <li class="list-group-item list-group-item-primary">CPU Name: <span th:text="${platformDetail.cpu.cpuName}"></span></li>
-						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.cpu.cpuVisualId}"></span></li>
-						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.cpu.qdf}"></span></li>
-						</ul>		        
-			        
-			        </p>
-			       
-			        <a href="#" class="btn btn-primary">Edit CPU Information</a>
-			      </div>
-			    </div>
-			    
-			  </div>
+			
 			</div>
 			
-			<!-- End of Row 1  -->
-			
-			<!-- End of Row 2  -->
+			<!-- Start row 3 -->
+
 			<div class="row">
 			
-			  <div class="col-sm-6">
+			  
+			  <div class="col-sm-12">
 			  
 			    <div class="card">
 			      <div class="card-body">
-			        <h5 class="card-title">PCH information:</h5>
-			        <p class="card-text">
-			        	<ul class="list-group">
-						  <li class="list-group-item list-group-item-primary">PCH Name: <span th:text="${platformDetail.pch.pchName}"></span></li>
-						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.pch.pchVisualId}"></span></li>
-						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.pch.qdf}"></span></li>
-						</ul>		        	             
-			        </p>
-			       
-			        <a href="#" class="btn btn-primary">Edit PCH Information</a>
+			        <h5 class="card-title">Annotations:</h5>
+			        	        
+			            <div class="panel panel-white post panel-shadow" th:each="annotation : ${platformDetail.platform.annotations}">
+			                <div class="post-heading">
+			                    <div class="pull-left image">
+			                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+			                    </div>
+			                    <div class="pull-left meta">
+			                        <div class="title h5">
+			                            <b th:text="${annotation.user.userName}"></b>
+			                        </div>
+			                        <div> 
+									  <h6 class="text-muted time" th:text="${#dates.format(annotation.date, 'dd-MMM-yyyy hh:MM a')}"></h6>
+									</div>
+			                    </div>
+			                </div> 
+			                <div class="post-description"> 
+			                    <p th:text="${annotation.description}"></p>
+			                    <button type="button" class="btn btn-info btn-sm">Edit</button>
+			                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+			                    
+			                </div>
+			            </div>	          					
 			      </div>
+			      
+			      <div class="card">
+					  <div class="card-body">
+					    <a href="#" class="btn btn-primary">Add Annotation</a>
+					  </div>
+				  </div>
+				  
 			    </div>
-			    
+				 
 			  </div>
 			
 			</div>

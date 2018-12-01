@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pmv.service.PlatformDetailService;
+import com.pmv.service.PlatformService;
 import com.pmv.service.UserService;
 
 
@@ -28,6 +29,10 @@ public class PlatformDetailController {
 	@Qualifier("platformDetailServiceImpl")
 	private PlatformDetailService platformDetailServiceImpl;
 	
+	@Autowired
+	@Qualifier("platformServiceImpl")
+	private PlatformService platformServiceImpl;
+	
 	
 	@GetMapping({"/admin/platformDetail"})
     public ModelAndView index(@RequestParam(name="platformId",required = true) int platformId) {
@@ -35,7 +40,7 @@ public class PlatformDetailController {
 		ModelAndView model = new ModelAndView("detailplatform");
 		model.addObject("username",user.getUsername());
 		model.addObject("platformDetail",platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
-		LOG.info("Esta es el detalle de la plataforma " + platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
+		LOG.info("Esta es el detalle de la plataforma " + platformServiceImpl.getOne(2));
 		return model;
     }
 	

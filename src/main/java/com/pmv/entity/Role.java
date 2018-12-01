@@ -1,12 +1,14 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,9 @@ public class Role implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="role_id", unique = true, nullable = false)
 	private int roleId;
+	
+	@OneToMany(mappedBy="role")
+	private List<User> users;
 	
 	@Column(name = "name", nullable = false, length= 45)
 	private String name;
@@ -41,6 +46,14 @@ public class Role implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

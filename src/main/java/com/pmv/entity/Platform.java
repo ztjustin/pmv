@@ -103,4 +103,11 @@ public class Platform implements Serializable {
 	}
 	
 	
+
+	@Override
+	public String toString() {
+		return "Platform [platformId=" + platformId + ", name=" + name + ", status=" + status + ", department="
+				+ department + ", platformDetail=" + platformDetail + ", annotations=" + annotations + "]";
+	}
+		
 }
