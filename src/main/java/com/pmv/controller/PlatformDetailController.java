@@ -19,7 +19,7 @@ import com.pmv.service.UserService;
 @Controller
 public class PlatformDetailController {
 	
-	private static final Log LOG = LogFactory.getLog(AuthenticationController.class);
+	private static final Log LOG = LogFactory.getLog(PlatformDetailController.class);
 	
 	@Autowired
 	@Qualifier("userServiceImpl")
@@ -40,7 +40,7 @@ public class PlatformDetailController {
 		ModelAndView model = new ModelAndView("detailplatform");
 		model.addObject("username",user.getUsername());
 		model.addObject("platformDetail",platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId));
-		LOG.info("Esta es el detalle de la plataforma " + platformServiceImpl.getOne(2));
+		LOG.info("Detalles de las plataformas");
 		return model;
     }
 	

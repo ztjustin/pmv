@@ -14,9 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="platform")
+@Table(name="platform", uniqueConstraints={@UniqueConstraint(columnNames = {"station"})})
 public class Platform implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,6 +29,9 @@ public class Platform implements Serializable {
 	
 	@Column(name = "name", nullable = false, length= 45)
 	private String name;
+	
+	@Column(name = "station", nullable = false, length= 45)
+	private String station;
 	
     @Enumerated(EnumType.STRING)
     private StatusPlatform status;
@@ -46,13 +50,16 @@ public class Platform implements Serializable {
 	public Platform() {
 		super();
 	}
+	
 
-	public Platform(String name, StatusPlatform status, Department department) {
+	public Platform(String name, String station, StatusPlatform status, Department department) {
 		super();
 		this.name = name;
+		this.station = station;
 		this.status = status;
 		this.department = department;
 	}
+
 
 	public int getPlatformId() {
 		return platformId;
@@ -101,13 +108,20 @@ public class Platform implements Serializable {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
-	
+
+	public String getStation() {
+		return station;
+	}
+
+	public void setStation(String station) {
+		this.station = station;
+	}
 
 	@Override
 	public String toString() {
-		return "Platform [platformId=" + platformId + ", name=" + name + ", status=" + status + ", department="
-				+ department + ", platformDetail=" + platformDetail + ", annotations=" + annotations + "]";
+		return "Platform [platformId=" + platformId + ", name=" + name + ", station=" + station + ", status=" + status
+				+ ", department=" + department + ", platformDetail=" + platformDetail + ", annotations=" + annotations
+				+ "]";
 	}
-		
+	
 }

@@ -21,7 +21,7 @@
 			  <div class="col-sm-12">
 				<div class="card text-center">
 				  <div class="card-header">
-				    PMV
+				    <span th:text="${platformDetail.platform.station}"></span>
 				  </div>
 				  <div class="card-body">
 				    <h5 class="card-title"><span th:text="${platformDetail.platform.name}"></span></h5>
@@ -50,7 +50,7 @@
 						</ul>		        	             
 			        </p>
 			       
-			        <a href="#" class="btn btn-primary">Edit PCH Information</a>
+			        <a href="#" th:href="@{/admin/pchEdit?pchId=__${platformDetail.pch.pchId}__}" class="btn btn-primary">Edit PCH Information</a>
 			      </div>
 			    </div>	
 			    			    

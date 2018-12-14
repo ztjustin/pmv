@@ -23,19 +23,23 @@ public class PchServiceImpl implements PchService{
 	}
 
 	@Override
-	public Pch getOne(int pchId) {
+	public Pch getOne(Long pchId) {
 		return pchJpaRepository.getOne(pchId);
 	}
-
+	
 	@Override
 	public Pch addOne(Pch pch) {
-		return pchJpaRepository.saveAndFlush(pch);
+		return pchJpaRepository.save(pch);
+	}
+	
+	@Override
+	public void delete(Long pchId) {
+		pchJpaRepository.deleteById(pchId);	
 	}
 
 	@Override
-	public void delete(int pchId) {
-		pchJpaRepository.deleteById(pchId);
-		
+	public boolean exists(Long pchId) {
+		return pchJpaRepository.existsById(pchId);
 	}
 
 }

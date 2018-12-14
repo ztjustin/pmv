@@ -10,5 +10,5 @@ import com.pmv.entity.HardDisk;
 @Repository("hardDiskJpaRepository")
 public interface HardDiskJpaRepository extends JpaRepository<HardDisk, Serializable> {
 	
-
+	
 }

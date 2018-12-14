@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+
+<title>PMV Application - Sign in</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- Custom styles for this template -->
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+
+<link href="#" th:href="@{/css/contacts.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h1><span th:text="${username}"></span></h1>
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>PCH Name</th>
+						<th>QDF</th>
+						<th>PCH Visual ID</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="pch : ${pchs}">
+					     <td class="align-middle" th:text="${pch.pchName}"></td>
+					     <td class="align-middle" th:text="${pch.qdf}"></td>
+					     <td class="align-middle" th:text="${pch.pchVisualId}"></td>
+					     <td>
+							<a href="#" th:href="@{/admin/pchEdit?pchId=__${pch.pchId}__}">
+							<button  type="button" class="btn btn-default">
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							</button>
+							</a>
+
+							<button type="button" class="btn btn-danger">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		
+				      
+	     <div  th:if="${error == 'error'}" class="alert alert-success"><span>Upps!. Something happen!.</span></div>
+	     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Pch updated successfully!.</span></div>
+				     
+		
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit">
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add
+			PCH
+		</button>
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit">
+			<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+			Logout
+		</button>
+
+	</div>
+
+
+</body>
+</html>

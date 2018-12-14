@@ -54,7 +54,6 @@ public class AuthenticationController {
 		ModelAndView model = new ModelAndView("platforms");
 		model.addObject("username",user.getUsername());
 		model.addObject("platforms",platformServiceImpl.getAll());
-		LOG.info(platformServiceImpl.getAll());
 		return model;
     }
 	

@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(name="pch")
+@Table(name="pch",uniqueConstraints={@UniqueConstraint(columnNames = {"pch_visual_id"})})
 public class Pch implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,7 +22,7 @@ public class Pch implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="pch_id", unique = true, nullable = false)
-	private int pchId;
+	private Long pchId;
 	
 	@Column(name = "pch_name", nullable = false, length= 45)
 	private String pchName;
@@ -31,7 +33,7 @@ public class Pch implements Serializable{
 	@Column(name = "pch_visual_id", nullable = false, length= 45)
 	private String pchVisualId;
 	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy = "pch")
+	@OneToOne(fetch = FetchType.EAGER,mappedBy = "pch")
     private PlatformDetail platformDetail;
 	
 	/*GETTERS AND SETTERS*/
@@ -40,7 +42,8 @@ public class Pch implements Serializable{
 		super();
 	}
 	
-	public Pch(int pchId, String pchName, String qdf, String pchVisualId) {
+
+	public Pch(Long pchId, String pchName, String qdf, String pchVisualId) {
 		super();
 		this.pchId = pchId;
 		this.pchName = pchName;
@@ -49,11 +52,11 @@ public class Pch implements Serializable{
 	}
 
 
-	public int getPchId() {
+	public Long getPchId() {
 		return pchId;
 	}
 
-	public void setPchId(int pchId) {
+	public void setPchId(Long pchId) {
 		this.pchId = pchId;
 	}
 
@@ -96,6 +99,12 @@ public class Pch implements Serializable{
 	public void setPchName(String pchName) {
 		this.pchName = pchName;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "Pch [pchId=" + pchId + ", pchName=" + pchName + ", qdf=" + qdf + ", pchVisualId=" + pchVisualId
+				+ ", platformDetail=" + platformDetail + "]";
+	}
 	
 }
