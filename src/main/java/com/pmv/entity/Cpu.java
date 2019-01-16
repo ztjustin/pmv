@@ -18,7 +18,7 @@ public class Cpu implements Serializable {
 	
 	@Id
 	@Column(name="cpu_id", unique = true, nullable = false)
-	private int cpuId;
+	private Long cpuId;
 	
 	@Column(name = "cpu_name", nullable = false, length= 45)
 	private String cpuName;
@@ -39,7 +39,7 @@ public class Cpu implements Serializable {
 		super();
 	}
 
-	public Cpu(int cpuId, String cpuName, String qdf, String cpuVisualId) {
+	public Cpu(Long cpuId, String cpuName, String qdf, String cpuVisualId) {
 		super();
 		this.cpuId = cpuId;
 		this.cpuName = cpuName;
@@ -47,11 +47,11 @@ public class Cpu implements Serializable {
 		this.cpuVisualId = cpuVisualId;
 	}
 
-	public int getCpuId() {
+	public Long getCpuId() {
 		return cpuId;
 	}
 
-	public void setCpuId(int cpuId) {
+	public void setCpuId(Long cpuId) {
 		this.cpuId = cpuId;
 	}
 
@@ -87,10 +87,5 @@ public class Cpu implements Serializable {
 		this.platformDetail = platformDetail;
 	}
 	
-	
-	
-	
-	
-	
-	
+
 }

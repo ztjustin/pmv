@@ -3,20 +3,52 @@
 <head>
 	<title>Backend Ninja - Add/modify Contact</title>
 	
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
 </head>
 <body>
 
 	<div class="jumbotron" th:object="${platformDetail}">
+	
+	
 		<div class="container">
 		
+		<!-- Start of Row 1  -->
+		
+			<div class="row">
+			  <div class="col-sm-12">
+					<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+					  <a class="navbar-brand" href="#" th:href="@{/admin/index}">PMV</a>
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse" id="navbarNav">
+					    <ul class="navbar-nav">
+					      <li class="nav-item active">
+					        <a class="nav-link" href="#">Hard Disks<span class="sr-only">(current)</span></a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#" th:href="@{/admin/cpu}">Cpu's</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#" th:href="@{/admin/pch}">Pch's</a>
+					      </li>
+					    </ul>
+					  </div>
+					</nav>
+			  </div>
+			</div>
+			
+		<!-- End of Row 1  -->
+		
+		<!-- Start of Row 2  -->
 			<div class="row">
 			  <div class="col-sm-12">
 				<div class="card text-center">
@@ -33,11 +65,12 @@
 				</div>
 			  </div>
 			</div>
-			
-			<!-- Start of Row 1  -->
+		<!-- End of Row 2  -->
+		
+		<!-- Start of Row 3  -->
 			<div class="row">
 			
-			  <div class="col-sm-6">
+			  <div class="col-sm-12">
 			  
 			    <div class="card">
 			      <div class="card-body">
@@ -59,9 +92,9 @@
 			  
 			</div>
 			
-			<!-- End of Row 1  -->
+			<!-- End of Row 3  -->
 			
-			<!-- start of Row 2  -->
+			<!-- start of Row 4  -->
 			<div class="row">
 			
 			  
@@ -79,7 +112,7 @@
 				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${cpu.cpuId}" aria-expanded="true" aria-controls="collapseZero">
 				          <span th:text="'CPU Name: ' + ${cpu.cpuName}"></span>
 				        </button>
-				        <a href="#" class="badge badge-info">Edit CPU</a>
+				        <a href="#" th:href="@{/admin/cpuEdit?cpuId=__${cpu.cpuId}__}" class="badge badge-info">Edit CPU</a>
 				      </h5>
 				    </div>
 				
@@ -104,7 +137,10 @@
 			
 			</div>
 			
-			<!-- End of Row 2  -->
+			<!-- End of Row 4  -->
+			
+			<!-- Start of Row 5  -->
+			
 			<div class="row">
 			
 			  
@@ -147,9 +183,9 @@
 			  </div>
 			
 			</div>
-			<!-- End of Row 2  -->
+			<!-- End of Row 5  -->
 			
-			<!-- Start row 3 -->
+			<!-- Start row 6 -->
 
 			<div class="row">
 			
@@ -195,7 +231,7 @@
 			
 			</div>
 
-        <!-- End of Row 2  -->
+        <!-- End of Row 6  -->
         
 		</div>
 	</div>
