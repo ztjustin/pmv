@@ -50,36 +50,59 @@
 						</ul>		        	             
 			        </p>
 			       
-			        <a href="#" th:href="@{/admin/pchEdit?pchId=__${platformDetail.pch.pchId}__}" class="btn btn-primary">Edit PCH Information</a>
+			        <a href="#" th:href="@{/admin/pchEdit?pchId=__${platformDetail.pch.pchId}__}" class="btn btn-info">Edit PCH Information</a>
 			      </div>
 			    </div>	
 			    			    
 			    
 			  </div>
 			  
-			  <div class="col-sm-6">
-			  
-			    <div class="card">
-			      <div class="card-body">
-			        <h5 class="card-title">CPU information:</h5>
-			        <p class="card-text">
-			        	        
-			        	<ul class="list-group">
-						  <li class="list-group-item list-group-item-primary">CPU Name: <span th:text="${platformDetail.cpu.cpuName}"></span></li>
-						  <li class="list-group-item list-group-item-primary">Visual ID: <span th:text="${platformDetail.cpu.cpuVisualId}"></span></li>
-						  <li class="list-group-item list-group-item-primary">QDF: <span th:text="${platformDetail.cpu.qdf}"></span></li>
-						</ul>		        
-			        
-			        </p>
-			       
-			        <a href="#" class="btn btn-primary">Edit CPU Information</a>
-			      </div>
-			    </div>
-			    	    
-			  </div>
 			</div>
 			
 			<!-- End of Row 1  -->
+			
+			<!-- start of Row 2  -->
+			<div class="row">
+			
+			  
+			  <div class="col-sm-12">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">CPU's:</h5>
+			      </div>
+			    </div>
+
+				<div class="card" th:each="cpu : ${platformDetail.cpus}">
+				    <div class="card-header" id="headingZero">
+				      <h5 class="mb-0">
+				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${cpu.cpuId}" aria-expanded="true" aria-controls="collapseZero">
+				          <span th:text="'CPU Name: ' + ${cpu.cpuName}"></span>
+				        </button>
+				        <a href="#" class="badge badge-info">Edit CPU</a>
+				      </h5>
+				    </div>
+				
+				      <div th:attr="id=''+${cpu.cpuId}" class="collapse show" aria-labelledby="headingZero" data-parent="#accordion">
+				      <div class="card-body">
+				          <ul class="list-group">
+						    <li class="list-group-item list-group-item-success">QDF: <span th:text="${cpu.qdf}"></span></li>
+						    <li class="list-group-item list-group-item-success">Visual ID: <span th:text="${cpu.cpuVisualId}"></span></li>
+						  </ul>
+				      </div>
+				    </div>
+				</div>
+		
+				<div class="card">
+				  <div class="card-body">
+				    <a href="#" class="btn btn-primary">Add CPU</a>
+				  </div>
+				</div>
+				 
+				 
+			  </div>
+			
+			</div>
 			
 			<!-- End of Row 2  -->
 			<div class="row">
@@ -96,7 +119,7 @@
 				<div class="card" th:each="hardDisk : ${platformDetail.hardDisks}">
 				    <div class="card-header" id="headingOne">
 				      <h5 class="mb-0">
-				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${hardDisk.hardDiskId}" aria-expanded="true" aria-controls="collapseOne">
+				        <button class="btn btn-link" data-toggle="collapse" th:attr="data-target='#'+${hardDisk.serial}" aria-expanded="true" aria-controls="collapseOne">
 				          <span th:text="'Serial Disk: ' + ${hardDisk.serial}"></span>
 				        </button>
 				         <a href="#" th:if="${hardDisk.hold == true}" class="badge badge-success">On platform</a>
@@ -104,7 +127,7 @@
 				      </h5>
 				    </div>
 				
-				    <div th:attr="id=''+${hardDisk.hardDiskId}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+				    <div th:attr="id=''+${hardDisk.serial}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 				      <div class="card-body">
 				          <ul class="list-group">
 						    <li class="list-group-item list-group-item-success">Type: <span th:text="${hardDisk.operatingSystem.typeSystem}"></span></li>
@@ -124,6 +147,7 @@
 			  </div>
 			
 			</div>
+			<!-- End of Row 2  -->
 			
 			<!-- Start row 3 -->
 
@@ -171,6 +195,8 @@
 			
 			</div>
 
+        <!-- End of Row 2  -->
+        
 		</div>
 	</div>
 	

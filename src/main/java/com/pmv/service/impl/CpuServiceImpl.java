@@ -24,7 +24,7 @@ public class CpuServiceImpl implements CpuService {
 	}
 
 	@Override
-	public Cpu getOne(int cpuId) {
+	public Cpu getOne(Long cpuId) {
 		return cpuJpaRepository.getOne(cpuId);
 	}
 
@@ -37,6 +37,11 @@ public class CpuServiceImpl implements CpuService {
 	public void delete(int cpuId) {
 		cpuJpaRepository.deleteById(cpuId);
 		
+	}
+
+	@Override
+	public boolean exists(Long cpuId) {
+		return cpuJpaRepository.existsById(cpuId);
 	}
 
 }

@@ -6,7 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +29,9 @@ public class Cpu implements Serializable {
 	@Column(name = "cpu_visual_id", nullable = false, length= 45)
 	private String cpuVisualId;
 	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy = "cpu")
-    private PlatformDetail platformDetail;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="platform_detail_id", nullable=true)
+	private PlatformDetail platformDetail;
 	
 	/*GETTERS AND SETTERS*/
 
@@ -84,6 +86,8 @@ public class Cpu implements Serializable {
 	public void setPlatformDetail(PlatformDetail platformDetail) {
 		this.platformDetail = platformDetail;
 	}
+	
+	
 	
 	
 	

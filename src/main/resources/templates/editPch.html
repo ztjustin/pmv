@@ -18,7 +18,7 @@
 	<div class="jumbotron" th:object="${pch}">
 		<div class="container">
 			
-			
+			<H1>Edit PCH</H1>
 			<br/>
 			<div class="row">
 			  <div class="col-sm-12">
@@ -31,17 +31,17 @@
 				    <div class="form-group col-md-6">
 				      <label for="pchName">Pch Name:</label>
 				      <input type="text" class="form-control" id="pchName" name="pchName" placeholder="PCH Name" th:if="${pch == null}">
-				      <input type="text" class="form-control" id="pchName" name="pchName" placeholder="PCH Name" th:if="${pch != null}" th:value="${pch.pchName}">
+				      <input type="text" class="form-control" id="pchName" name="pchName" placeholder="PCH Name" th:if="${pch != null}" th:value="${pch.pchName}" required>
 				    </div>
 				    <div class="form-group col-md-6">
 				      <label for="qdf">QDF:</label>
 				      <input type="text" class="form-control" id="qdf" name="qdf" placeholder="QDF" th:if="${pch == null}">
-				      <input type="text" class="form-control" id="qdf" name="qdf" placeholder="QDF" th:if="${pch != null}" th:value="${pch.qdf}">
+				      <input type="text" class="form-control" id="qdf" name="qdf" placeholder="QDF" th:if="${pch != null}" th:value="${pch.qdf}" required>
 				    </div>
 				    <div class="form-group col-md-12">
 				      <label for="pchVisualId">Visual Id:</label>
 				      <input type="text" class="form-control" id="pchVisualId" name="pchVisualId" placeholder="Visual ID" th:if="${pch == null}">
-				      <input type="text" class="form-control" id="pchVisualId" name="pchVisualId" placeholder="Visual ID" th:if="${pch != null}" th:value="${pch.pchVisualId}">
+				      <input type="text" class="form-control" id="pchVisualId" name="pchVisualId" placeholder="Visual ID" th:if="${pch != null}" th:value="${pch.pchVisualId}" required>
 				      <br/>
 				      <div  th:if="${error == 'error'}" class="alert alert-success"><span>Upps!. Something happen!.</span></div>
 				      <div  th:if="${success == 'success'}" class="alert alert-success"><span>Pch updated successfully!.</span></div>

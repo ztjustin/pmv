@@ -8,10 +8,12 @@ public interface CpuService {
 	
 	public abstract List<Cpu> getAll();
 	
-	public abstract Cpu getOne(int cpuId);
+	public abstract Cpu getOne(Long cpuId);
 	
 	public abstract Cpu addOne(Cpu cpu);
 	
 	public abstract void delete(int cpuId);
+	
+	public abstract boolean exists(Long cpuId);
 
 }

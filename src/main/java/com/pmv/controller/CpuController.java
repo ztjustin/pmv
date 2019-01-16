@@ -1,6 +1,5 @@
 package com.pmv.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -17,62 +16,58 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pmv.entity.Pch;
-import com.pmv.service.PchService;
+import com.pmv.entity.Cpu;
+import com.pmv.service.CpuService;
 
 @Controller
-public class PchController {
+public class CpuController {
 	
-	private static final Log LOG = LogFactory.getLog(PchController.class);
+	private static final Log LOG = LogFactory.getLog(CpuController.class);
 	
 	@Autowired
-	@Qualifier("pchServiceImpl")
-	private PchService pchServiceImpl;
+	@Qualifier("cpuServiceImpl")
+	private CpuService cpuServiceImpl;
 	
-	@GetMapping({"/admin/pch"})
+	
+	@GetMapping({"/admin/cpu"})
     public ModelAndView index() {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		ModelAndView model = new ModelAndView("pchs");
+		ModelAndView model = new ModelAndView("cpus");
 		model.addObject("username",user.getUsername());
-		model.addObject("pchs",pchServiceImpl.getAll());
-		LOG.info("Esta es el detalle de la plataforma " + pchServiceImpl.getAll().toString());
+		model.addObject("cpus",cpuServiceImpl.getAll());
+		LOG.info("Esta es el detalle de la plataforma " + cpuServiceImpl.getAll().toString());
 		return model;
     }
 	
-	@GetMapping({"/admin/pchEdit"})
-    public String editPch(@RequestParam(name="pchId",required = false) Long pchId,Model model) {
+	@GetMapping({"/admin/cpuEdit"})
+    public String detailPch(@RequestParam(name="cpuId",required = false) Long cpuId,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
 		
-		if(pchId == null  ||  pchServiceImpl.exists(pchId) == false) {
-			 return "redirect:/admin/pch";	
+		if(cpuId == null  ||  cpuServiceImpl.exists(cpuId) == false) {
+			 return "redirect:/admin/cpu";	
 		}else {
-			model.addAttribute("pch",pchServiceImpl.getOne(pchId));
+			model.addAttribute("cpu",cpuServiceImpl.getOne(cpuId));
 		}
 
-		return "editPch";
+		return "editCpu";
     }
 	
-	@PostMapping({"/admin/addOrEditPch"})
-    public String addOrEdit(@ModelAttribute(name="Pch") Pch pch,HttpServletRequest request,Model model) {
+	
+	@PostMapping({"/admin/addOrEditCpu"})
+    public String addOrEdit(@ModelAttribute(name="Cpu") Cpu cpu,HttpServletRequest request,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
-
-		
-		/*if(pchServiceImpl.exists(pch.getPchId())) {
-			model.addAttribute("exits","exits");
-			return "redirect:"+ referer;
-		}*/
 		
 		try {
-			pchServiceImpl.addOne(pch);
+			cpuServiceImpl.addOne(cpu);
 			model.addAttribute("success","success");
-			return "editPch";
+			return "editCpu";
 		}catch(Exception ex) {
 			model.addAttribute("error","error");
-			return "editPch";
+			return "editCpu";
 		}
 
     }

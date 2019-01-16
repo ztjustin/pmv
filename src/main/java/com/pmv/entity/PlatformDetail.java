@@ -45,9 +45,8 @@ public class PlatformDetail implements Serializable {
 	@Column(name = "last_update", nullable = false)
 	private LocalDate lastUpdate;
 	
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "cpu_id", nullable = false)
-    private Cpu cpu;
+	@OneToMany(mappedBy="platformDetail")
+	private List<Cpu> cpus;
     
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pch_id", nullable = false)
@@ -117,12 +116,12 @@ public class PlatformDetail implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public Cpu getCpu() {
-		return cpu;
+	public List<Cpu> getCpus() {
+		return cpus;
 	}
 
-	public void setCpu(Cpu cpu) {
-		this.cpu = cpu;
+	public void setCpus(List<Cpu> cpus) {
+		this.cpus = cpus;
 	}
 
 	public Pch getPch() {
