@@ -36,6 +36,8 @@ public class Pch implements Serializable{
 	@OneToOne(fetch = FetchType.EAGER,mappedBy = "pch")
     private PlatformDetail platformDetail;
 	
+	
+	
 	/*GETTERS AND SETTERS*/
 
 	public Pch() {
@@ -99,6 +101,8 @@ public class Pch implements Serializable{
 	public void setPchName(String pchName) {
 		this.pchName = pchName;
 	}
+	
+	
 
 
 	@Override

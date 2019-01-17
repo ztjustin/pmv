@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,7 @@ public class Cpu implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="cpu_id", unique = true, nullable = false)
 	private Long cpuId;
 	
@@ -30,7 +33,7 @@ public class Cpu implements Serializable {
 	private String cpuVisualId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="platform_detail_id", nullable=true)
+	@JoinColumn(name="platform_detail_id", nullable = false)
 	private PlatformDetail platformDetail;
 	
 	/*GETTERS AND SETTERS*/
@@ -38,6 +41,7 @@ public class Cpu implements Serializable {
 	public Cpu() {
 		super();
 	}
+
 
 	public Cpu(Long cpuId, String cpuName, String qdf, String cpuVisualId) {
 		super();
@@ -86,6 +90,13 @@ public class Cpu implements Serializable {
 	public void setPlatformDetail(PlatformDetail platformDetail) {
 		this.platformDetail = platformDetail;
 	}
+
+	@Override
+	public String toString() {
+		return "Cpu [cpuId=" + cpuId + ", cpuName=" + cpuName + ", qdf=" + qdf + ", cpuVisualId=" + cpuVisualId
+				+ ", platformDetail=" + platformDetail + "]";
+	}
+
 	
 
 }

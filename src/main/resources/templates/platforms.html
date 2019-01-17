@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
 
-    <title>PMV Application - Sign in</title>
+	<title>PMV Application - Sign in</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -66,75 +66,81 @@
 			</div>
 			<!-- End of Row 2  -->
 			
-			<!-- Start of Row 3  -->
+			<!-- start of Row 3  -->
 			<div class="row">
 			
-			  <div class="col-sm-12">
-		  				<div class="panel panel-default">
-								<div class="panel-heading"></div>
-								<table class="table">
-									<thead>
-										<tr>
-											<th>Platform</th>
-											<th>Status</th>
-											<th>Department</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="platform : ${platforms}">
-										     <td class="align-middle" th:text="${platform.name}"></td>
-										     <!-- IF CUSTOMER IS ANONYMOUS -->
-											 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='UP'}">	
-												<button type="button" class="btn btn-success">
-													<i class="fa fa-caret-up"></i>
-												</button>
-											 </td>
-											 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='DOWN'}">
-												<button type="button" class="btn btn-danger">
-													<i class="fa fa-caret-down"></i>
-												</button>
-											 </td>
-											 <td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='RUNNING'}">
-												<button type="button" class="btn btn-warning">
-													<i class="fa fa-caret-right"></i>
-												</button>
-											 </td>
-										     <td class="align-middle" th:text="${platform.department}"></td>
-										     <td>
-												<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
-												<button  type="button" class="btn btn-default">
-													<i class="fa fa-eye"></i>
-												</button>
-												</a>
-					
-												<button type="button" class="btn btn-danger">
-													<i class="fa fa-trash-o"></i>
-												</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>	
-					
-							<button class="btn btn-lg btn-primary btn-block" type="submit">
-								<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add
-								Platform
-							</button>
-					
-							<button class="btn btn-lg btn-primary btn-block" type="submit">
-								<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-								Logout
-							</button>
-					
-			</div>
-		 </div>
 			  
-	 </div>
+			<div class="col-sm-12">
+			  
+				<div class="panel panel-default">
+					<div class="panel-heading"></div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Platform</th>
+								<th>Status</th>
+								<th>Department</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="platform : ${platforms}">
+								<td class="align-middle" th:text="${platform.name}"></td>
+										     <!-- IF CUSTOMER IS ANONYMOUS -->
+								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='UP'}">
+									<button type="button" class="btn btn-success">
+										<i class="fa fa-caret-up"></i>
+									</button>
+								</td>
+								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='DOWN'}">
+									<button type="button" class="btn btn-danger">
+										<i class="fa fa-caret-down"></i>
+									</button>
+								</td>
+								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='RUNNING'}">
+									<button type="button" class="btn btn-warning">
+										<i class="fa fa-caret-right"></i>
+									</button>
+								 </td>
+								 <td class="align-middle" th:text="${platform.department}"></td>
+								 <td>
+									<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
+									<button  type="button" class="btn btn-default">
+										<i class="fa fa-eye"></i>
+									</button>
+									</a>
+
+									<button type="button" class="btn btn-danger">
+										<i class="fa fa-trash-o"></i>
+									</button>
+								  </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+		
+			     <div  th:if="${error == 'error'}" class="alert alert-danger"><span>Upps!. Something happen!.</span></div>
+			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Pch updated successfully!.</span></div>
+		
+		
+		
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add
+					Platform
+				</button>
+		
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+					Logout
+				</button> 
+				 
+			  </div>
+			
+			</div>
 			
 			<!-- End of Row 3  -->
-		
-        
+
 		</div>
 	</div>
 	

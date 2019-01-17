@@ -55,7 +55,7 @@ public class PchController {
     }
 	
 	@PostMapping({"/admin/addOrEditPch"})
-    public String addOrEdit(@ModelAttribute(name="Pch") Pch pch,HttpServletRequest request,Model model) {
+    public String addOrEditPch(@ModelAttribute(name="Pch") Pch pch,HttpServletRequest request,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());

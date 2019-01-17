@@ -43,7 +43,7 @@
 				      <input type="text" class="form-control" id="pchVisualId" name="pchVisualId" placeholder="Visual ID" th:if="${pch == null}">
 				      <input type="text" class="form-control" id="pchVisualId" name="pchVisualId" placeholder="Visual ID" th:if="${pch != null}" th:value="${pch.pchVisualId}" required>
 				      <br/>
-				      <div  th:if="${error == 'error'}" class="alert alert-success"><span>Upps!. Something happen!.</span></div>
+				      <div  th:if="${error == 'error'}" class="alert alert-danger"><span>Upps!. Something happen!.</span></div>
 				      <div  th:if="${success == 'success'}" class="alert alert-success"><span>Pch updated successfully!.</span></div>
 				      <br/>
 				      <button type="submit" class="btn btn-primary">Edit PCH</button>

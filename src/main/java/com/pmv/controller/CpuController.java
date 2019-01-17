@@ -40,7 +40,7 @@ public class CpuController {
     }
 	
 	@GetMapping({"/admin/cpuEdit"})
-    public String detailPch(@RequestParam(name="cpuId",required = false) Long cpuId,Model model) {
+    public String detailCpu(@RequestParam(name="cpuId",required = false) Long cpuId,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
@@ -56,17 +56,23 @@ public class CpuController {
 	
 	
 	@PostMapping({"/admin/addOrEditCpu"})
-    public String addOrEdit(@ModelAttribute(name="Cpu") Cpu cpu,HttpServletRequest request,Model model) {
+    public String addOrEditCpu(@ModelAttribute(name="CpuAdd") Cpu cpu,HttpServletRequest request,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
 		
 		try {
-			cpuServiceImpl.addOne(cpu);
+			
+			Cpu newCpu = cpu;
+			newCpu.setPlatformDetail(cpuServiceImpl.getOne(cpu.getCpuId()).getPlatformDetail());
+		
+			cpuServiceImpl.addOne(newCpu);
 			model.addAttribute("success","success");
 			return "editCpu";
+			
 		}catch(Exception ex) {
 			model.addAttribute("error","error");
+			LOG.info(ex.toString());
 			return "editCpu";
 		}
 

@@ -30,11 +30,11 @@ public class CpuServiceImpl implements CpuService {
 
 	@Override
 	public Cpu addOne(Cpu cpu) {
-		return cpuJpaRepository.saveAndFlush(cpu);
+		return cpuJpaRepository.save(cpu);
 	}
 
 	@Override
-	public void delete(int cpuId) {
+	public void delete(Long cpuId) {
 		cpuJpaRepository.deleteById(cpuId);
 		
 	}
@@ -43,5 +43,6 @@ public class CpuServiceImpl implements CpuService {
 	public boolean exists(Long cpuId) {
 		return cpuJpaRepository.existsById(cpuId);
 	}
+
 
 }

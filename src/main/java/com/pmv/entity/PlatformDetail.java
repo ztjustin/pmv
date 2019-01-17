@@ -26,7 +26,7 @@ public class PlatformDetail implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="platform_detail_id", unique = true, nullable = false)
-	private int platformDetailId;
+	private Long platformDetailId;
 	
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "platform_id", nullable = false)
@@ -68,11 +68,11 @@ public class PlatformDetail implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public int getPlatformDetailId() {
+	public Long getPlatformDetailId() {
 		return platformDetailId;
 	}
 
-	public void setPlatformDetailId(int platformDetailId) {
+	public void setPlatformDetailId(Long platformDetailId) {
 		this.platformDetailId = platformDetailId;
 	}
 	
