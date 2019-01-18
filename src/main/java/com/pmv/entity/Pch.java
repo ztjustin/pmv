@@ -35,8 +35,7 @@ public class Pch implements Serializable{
 	
 	@OneToOne(fetch = FetchType.EAGER,mappedBy = "pch")
     private PlatformDetail platformDetail;
-	
-	
+
 	
 	/*GETTERS AND SETTERS*/
 

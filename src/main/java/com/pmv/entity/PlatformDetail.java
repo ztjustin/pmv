@@ -51,7 +51,7 @@ public class PlatformDetail implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pch_id", nullable = false)
     private Pch pch;
-	
+    
 	
 	/*GETTERS AND SETTERS*/
     
