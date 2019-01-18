@@ -59,12 +59,6 @@ public class PchController {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
-
-		
-		/*if(pchServiceImpl.exists(pch.getPchId())) {
-			model.addAttribute("exits","exits");
-			return "redirect:"+ referer;
-		}*/
 		
 		try {
 			pchServiceImpl.addOne(pch);

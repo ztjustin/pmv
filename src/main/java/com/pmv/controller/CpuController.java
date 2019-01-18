@@ -35,7 +35,7 @@ public class CpuController {
 		ModelAndView model = new ModelAndView("cpus");
 		model.addObject("username",user.getUsername());
 		model.addObject("cpus",cpuServiceImpl.getAll());
-		LOG.info("Esta es el detalle de la plataforma " + cpuServiceImpl.getAll().toString());
+		LOG.info("Esta es el detalle de los CPU " + cpuServiceImpl.getAll().toString());
 		return model;
     }
 	

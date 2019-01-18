@@ -33,7 +33,7 @@ public class Pch implements Serializable{
 	@Column(name = "pch_visual_id", nullable = false, length= 45)
 	private String pchVisualId;
 	
-	@OneToOne(fetch = FetchType.EAGER,mappedBy = "pch")
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "pch")
     private PlatformDetail platformDetail;
 
 	
@@ -101,13 +101,5 @@ public class Pch implements Serializable{
 		this.pchName = pchName;
 	}
 	
-	
-
-
-	@Override
-	public String toString() {
-		return "Pch [pchId=" + pchId + ", pchName=" + pchName + ", qdf=" + qdf + ", pchVisualId=" + pchVisualId
-				+ ", platformDetail=" + platformDetail + "]";
-	}
 	
 }

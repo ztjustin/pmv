@@ -117,11 +117,5 @@ public class Platform implements Serializable {
 		this.station = station;
 	}
 
-	@Override
-	public String toString() {
-		return "Platform [platformId=" + platformId + ", name=" + name + ", station=" + station + ", status=" + status
-				+ ", department=" + department + ", platformDetail=" + platformDetail + ", annotations=" + annotations
-				+ "]";
-	}
 	
 }

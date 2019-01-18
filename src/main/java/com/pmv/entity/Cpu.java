@@ -91,12 +91,5 @@ public class Cpu implements Serializable {
 		this.platformDetail = platformDetail;
 	}
 
-	@Override
-	public String toString() {
-		return "Cpu [cpuId=" + cpuId + ", cpuName=" + cpuName + ", qdf=" + qdf + ", cpuVisualId=" + cpuVisualId
-				+ ", platformDetail=" + platformDetail + "]";
-	}
-
 	
-
 }

@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="platform_detail")
 public class PlatformDetail implements Serializable {
@@ -48,8 +49,8 @@ public class PlatformDetail implements Serializable {
 	@OneToMany(mappedBy="platformDetail")
 	private List<Cpu> cpus;
     
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "pch_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pch_id", nullable = true)
     private Pch pch;
     
 	
@@ -59,14 +60,6 @@ public class PlatformDetail implements Serializable {
 		super();
 	}
 
-	public PlatformDetail(List<HardDisk> hardDisks, Platform platform, Itp itp, Project project, LocalDate lastUpdate) {
-		super();
-		this.hardDisks = hardDisks;
-		this.platform = platform;
-		this.itp = itp;
-		this.project = project;
-		this.lastUpdate = lastUpdate;
-	}
 
 	public Long getPlatformDetailId() {
 		return platformDetailId;
@@ -131,6 +124,16 @@ public class PlatformDetail implements Serializable {
 	public void setPch(Pch pch) {
 		this.pch = pch;
 	}
+
+
+	@Override
+	public String toString() {
+		return "PlatformDetail [platformDetailId=" + platformDetailId + ", platform=" + platform + ", hardDisks="
+				+ hardDisks + ", itp=" + itp + ", project=" + project + ", lastUpdate=" + lastUpdate + ", cpus=" + cpus
+				+ ", pch=" + pch + "]";
+	}
 	
-		
+	
+
+	
 }
