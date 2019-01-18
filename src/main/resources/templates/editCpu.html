@@ -22,7 +22,7 @@
 			<br/>
 			<div class="row">
 			  <div class="col-sm-12">
-				<form th:action="@{/admin/addOrEditCpu}" th:object="${cpuAdd}" method="post">
+				<form th:action="@{/admin/addOrEditCpu}" th:object="${cpu}" method="post">
 				<input type="hidden" name="_csrf" value="0fe442a5-1bc0-446a-835a-40654916b5da"/>
 				
 				  <div class="form-row">
@@ -31,7 +31,7 @@
 				      <input type="hidden" class="form-control" id="cpuId" name="cpuId" th:if="${cpu != null}" th:value="${cpu.cpuId}"/>
 				    </div>	
 				  	<div class="form-group col-md-12">
-				      <input type="text" class="form-control" id="platformDetail" name="platformDetail.platformDetailId" th:value="${platformDetail.platformDetailId}"/>
+				      <input type="hidden" class="form-control" id="platformDetail" name="platformDetail.platformDetailId" th:if="${cpu != null}" th:value="${cpu.platformDetail.platformDetailId}"/>
 				    </div>		  	 
 				    <div class="form-group col-md-6">
 				      <label for="pchName">Cpu Name:</label>

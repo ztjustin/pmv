@@ -56,7 +56,7 @@ public class CpuController {
 	
 	
 	@PostMapping({"/admin/addOrEditCpu"})
-    public String addOrEditCpu(@ModelAttribute(name="CpuAdd") Cpu cpu,HttpServletRequest request,Model model) {
+    public String addOrEditCpu(@ModelAttribute(name="Cpu") Cpu cpu,HttpServletRequest request,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
