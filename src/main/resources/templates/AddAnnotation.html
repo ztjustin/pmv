@@ -18,7 +18,7 @@
 
 <body>
 
-	<div class="jumbotron">
+	<div class="jumbotron" th:object="${platform}">
 		<div class="container">
 		
 			<!-- Start of Row 1  -->
@@ -74,16 +74,33 @@
 			  
 				<form class="needs-validation" th:action="@{/admin/annotation/addNewAnnotation}" th:object="${annotation}" method="post" novalidate>
 				
+				  <input type="hidden" name="_csrf" value="0fe442a5-1bc0-446a-835a-40654916b5da"/>
 				  <div class="form-row">
 				  
-				    <div class="col-md-4 mb-3" th:object="${platform}">
+				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend">Platform ID</span>
 				        </div>
-				        <input type="hidden" class="form-control" id="platformId" name="platform.platformId" th:if="${platform != null}" th:value="${platform.platformId}"/>
+				        <input type="text" class="form-control" id="platformId" name="platform.platformId" th:value="${platform.platformId}" readonly required/>
 				        <div class="invalid-feedback">
 				          Please write a valid platform id.
+				        </div>
+				      </div>
+				    </div>
+				      				        
+				  </div>
+				  
+				  <div class="form-row">
+				  
+				    <div class="col-md-4 mb-3">
+				      <div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend">Platform Name</span>
+				        </div>
+				        <input type="text" class="form-control" id="platformId" name="platform.platformId" th:value="${platform.name}" disabled required/>
+				        <div class="invalid-feedback">
+				          Please write a valid platform name.
 				        </div>
 				      </div>
 				    </div>
@@ -93,11 +110,20 @@
 				  
 				  <div class="form-row">
 				  
+				  
 				    <div class="col-md-12 mb-3">
 				    
-					 <textarea class="form-control" rows="5" id="description" name="description"></textarea>
-				    
+				      <div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend">Description</span>
+				        </div>
+				        <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
+				        <div class="invalid-feedback">
+				          Please write a valid platform description.
+				        </div>
+				      </div>
 				    </div>
+				 
 				     
 				  </div>
 				  

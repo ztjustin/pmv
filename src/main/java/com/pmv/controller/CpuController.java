@@ -63,9 +63,6 @@ public class CpuController {
 		
 		try {
 			
-			/*Cpu newCpu = cpu;
-			newCpu.setPlatformDetail(cpuServiceImpl.getOne(cpu.getCpuId()).getPlatformDetail());*/
-		
 			cpuServiceImpl.addOne(cpu);
 			model.addAttribute("success","success");
 			return "editCpu";

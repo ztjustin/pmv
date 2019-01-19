@@ -49,7 +49,7 @@ public class AnnotationController {
 	
 	
 	@GetMapping({"/admin/annotation/newAnnotation"})
-    public String updatePlatform(@RequestParam(name="platformId",required = false) Long platformId,Model model) {
+    public String addNewAnnotation(@RequestParam(name="platformId",required = false) Long platformId,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
@@ -86,6 +86,7 @@ public class AnnotationController {
 			
 
 			model.addAttribute("success","success");
+			model.addAttribute("platform",platformServiceImpl.getOne(annotation.getPlatform().getPlatformId()));
 			return "AddAnnotation";
 			
 		}catch(Exception ex) {
