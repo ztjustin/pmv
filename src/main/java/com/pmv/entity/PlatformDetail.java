@@ -126,13 +126,6 @@ public class PlatformDetail implements Serializable {
 		this.pch = pch;
 	}
 
-
-	@Override
-	public String toString() {
-		return "PlatformDetail [platformDetailId=" + platformDetailId + ", platform=" + platform + ", hardDisks="
-				+ hardDisks + ", itp=" + itp + ", project=" + project + ", lastUpdate=" + lastUpdate + ", cpus=" + cpus
-				+ ", pch=" + pch + "]";
-	}
 	
 	
 }

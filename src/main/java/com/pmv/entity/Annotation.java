@@ -30,11 +30,11 @@ public class Annotation implements Serializable {
 	@Column(name = "description", nullable = false, length= 500)
 	private String description;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="platform_id", nullable=false)
 	private Platform platform;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="username", nullable=false)
 	private User user;
 	
@@ -92,8 +92,6 @@ public class Annotation implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
 
+	
 }
