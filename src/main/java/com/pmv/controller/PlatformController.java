@@ -99,6 +99,11 @@ public class PlatformController {
 		try {
 			
 			platformServiceImpl.addOne(platform);
+			PlatformDetail newDetailPlatform = platformDetailServiceImpl.getPlatformDetailByPlatformId(platform.getPlatformId());
+			LOG.info(newDetailPlatform.toString());
+			Date localDate = new Date();
+			newDetailPlatform.setLastUpdate(localDate);
+			platformDetailServiceImpl.addOne(newDetailPlatform);
 			model.addAttribute("success","success");
 			return "updatePlatform";
 			
