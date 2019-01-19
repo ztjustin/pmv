@@ -83,7 +83,7 @@ public class AnnotationController {
 			/* Setting update from platformDetailHour*/
 			PlatformDetail newDetailPlatform = platformDetailServiceImpl.getPlatformDetailByPlatformId(annotation.getPlatform().getPlatformId());
 			newDetailPlatform.setLastUpdate(localDate);
-			
+			platformDetailServiceImpl.addOne(newDetailPlatform);
 
 			model.addAttribute("success","success");
 			model.addAttribute("platform",platformServiceImpl.getOne(annotation.getPlatform().getPlatformId()));

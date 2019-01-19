@@ -117,15 +117,6 @@ public class Platform implements Serializable {
 
 	public void setStation(String station) {
 		this.station = station;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Platform [platformId=" + platformId + ", name=" + name + ", station=" + station + ", status=" + status
-				+ ", department=" + department + ", platformDetail=" + platformDetail + ", annotations=" + annotations
-				+ "]";
-	}
-	
+	}	
 	
 }
