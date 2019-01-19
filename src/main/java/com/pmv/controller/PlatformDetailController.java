@@ -35,7 +35,7 @@ public class PlatformDetailController {
 	
 	
 	@GetMapping({"/admin/platformDetail"})
-    public ModelAndView index(@RequestParam(name="platformId",required = true) int platformId) {
+    public ModelAndView index(@RequestParam(name="platformId",required = true) Long platformId) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		ModelAndView model = new ModelAndView("detailplatform");
 		model.addObject("username",user.getUsername());

@@ -12,6 +12,6 @@ import com.pmv.entity.PlatformDetail;
 public interface PlatformDetailJpaRepository extends JpaRepository<PlatformDetail, Serializable> {
 	
 	@Query(value = "from PlatformDetail where platform_id = :platformId")
-    public abstract PlatformDetail findPlatformDetailByPlatformId(@Param("platformId")int platformId);
+    public abstract PlatformDetail findPlatformDetailByPlatformId(@Param("platformId")Long platformId);
 	
 }

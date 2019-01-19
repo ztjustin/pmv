@@ -1,7 +1,7 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,25 +26,25 @@ public class PlatformDetail implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="platform_detail_id", unique = true, nullable = false)
+	@Column(name="platform_detail_id", unique = true)
 	private Long platformDetailId;
 	
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "platform_id", nullable = false)
     private Platform platform;
     
 	@OneToMany(mappedBy="platformDetail")
 	private List<HardDisk> hardDisks;
     
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "itp_id", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "itp_id", nullable = true)
     private Itp itp;
     
     @Enumerated(EnumType.STRING)
     private Project project;
     
-	@Column(name = "last_update", nullable = false)
-	private LocalDate lastUpdate;
+	@Column(name = "last_update", nullable = true)
+	private Date lastUpdate;
 	
 	@OneToMany(mappedBy="platformDetail")
 	private List<Cpu> cpus;
@@ -64,11 +64,12 @@ public class PlatformDetail implements Serializable {
 	public Long getPlatformDetailId() {
 		return platformDetailId;
 	}
-
+	
 	public void setPlatformDetailId(Long platformDetailId) {
 		this.platformDetailId = platformDetailId;
 	}
-	
+
+
 	public List<HardDisk> getHardDisks() {
 		return hardDisks;
 	}
@@ -101,11 +102,11 @@ public class PlatformDetail implements Serializable {
 		this.project = project;
 	}
 
-	public LocalDate getLastUpdate() {
+	public Date getLastUpdate() {
 		return lastUpdate;
 	}
 
-	public void setLastUpdate(LocalDate lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -133,7 +134,5 @@ public class PlatformDetail implements Serializable {
 				+ ", pch=" + pch + "]";
 	}
 	
-	
-
 	
 }

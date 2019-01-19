@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Backend Ninja - Add/modify Contact</title>
+
+	<title>PMV - Platform Detail</title>
 	
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -62,15 +63,38 @@
 				    <p class="card-text"><span th:text="${platformDetail.platform.department}"></span></p>
 				  </div>
 				  <div class="card-footer text-muted">
-				    Last Update Today
+				  	<p class="card-text">Last Update: <span th:text="${#dates.format(platformDetail.lastUpdate, 'dd-MMM-yyyy hh:MM a')}"></span></p>
 				  </div>
 				</div>
 			  </div>
 			</div>
 		<!-- End of Row 2  -->
 		
-		<!-- Start of Row 3  -->
-			<div class="row">
+		<!-- Start of Row 2.5  -->
+			<div class="row" th:if="${platformDetail.pch == null}">
+			
+			  <div class="col-sm-12">
+			  
+			    <div class="card">
+			      <div class="card-body">
+			        <h5 class="card-title">PCH:</h5>  
+			      </div>
+			    </div>	
+			    
+				<div class="card">
+				  <div class="card-body">
+				    <a href="#" class="btn btn-primary">Add PCH</a>
+				  </div>
+				</div>
+			    			    
+			    
+			  </div>
+			  
+			</div>
+		
+		<!-- Start of Row 2.5  -->
+		
+			<div class="row" th:if="${platformDetail.pch != null}">
 			
 			  <div class="col-sm-12">
 			  
@@ -133,8 +157,7 @@
 				    <a href="#" class="btn btn-primary">Add CPU</a>
 				  </div>
 				</div>
-				 
-				 
+				  
 			  </div>
 			
 			</div>

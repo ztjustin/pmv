@@ -23,19 +23,24 @@ public class PlatformServiceImpl implements PlatformService{
 	}
 
 	@Override
-	public Platform getOne(int platformId) {
+	public Platform getOne(Long platformId) {
 		return platformJpaRepository.getOne(platformId);
 	}
 
 	@Override
 	public Platform addOne(Platform platform) {
-		return platformJpaRepository.saveAndFlush(platform);
+		return platformJpaRepository.save(platform);
 	}
 
 	@Override
-	public void delete(int platformId) {
+	public void delete(Long platformId) {
 		platformJpaRepository.deleteById(platformId);
 		
+	}
+
+	@Override
+	public boolean exists(Long platformId) {
+		return platformJpaRepository.existsById(platformId);
 	}
 
 	

@@ -8,10 +8,12 @@ public interface PlatformService {
 	
 	public abstract List<Platform> getAll();
 	
-	public abstract Platform getOne(int platformId);
+	public abstract Platform getOne(Long platformId);
 	
 	public abstract Platform addOne(Platform platform);
 	
-	public abstract void delete(int platformId);
+	public abstract void delete(Long platformId);
+
+	public abstract boolean exists(Long platformId);
 
 }

@@ -23,7 +23,7 @@ public class PlatformDetailServiceImpl implements PlatformDetailService{
 	}
 
 	@Override
-	public PlatformDetail getOne(int platformDetailId) {
+	public PlatformDetail getOne(Long platformDetailId) {
 		return platformDetailJpaRepository.getOne(platformDetailId);
 	}
 
@@ -33,12 +33,12 @@ public class PlatformDetailServiceImpl implements PlatformDetailService{
 	}
 
 	@Override
-	public void delete(int platformDetailId) {
+	public void delete(Long platformDetailId) {
 		platformDetailJpaRepository.deleteById(platformDetailId);
 	}
 
 	@Override
-	public PlatformDetail getPlatformDetailByPlatformId(int platformId) {
+	public PlatformDetail getPlatformDetailByPlatformId(Long platformId) {
 		return platformDetailJpaRepository.findPlatformDetailByPlatformId(platformId);
 	}
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
 
-	<title>PMV Application - Add new platform</title>
+	<title>PMV Application - Update platform</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -18,7 +18,7 @@
 
 <body>
 
-	<div class="jumbotron">
+	<div class="jumbotron" th:object="${platform}">
 		<div class="container">
 		
 			<!-- Start of Row 1  -->
@@ -31,8 +31,8 @@
 					  </button>
 					  <div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
-					      <li class="nav-item active">
-					        <a class="nav-link" href="#">Hard Disks<span class="sr-only">(current)</span></a>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">Hard Disks</a>
 					      </li>
 					      <li class="nav-item">
 					        <a class="nav-link" href="#" th:href="@{/admin/cpu}">Cpu's</a>
@@ -57,7 +57,7 @@
 				    
 				  </div>
 				  <div class="card-body">
-				    <h1>New Platform</h1>
+				    <h1>Update Platform</h1>
 				  </div>
 				  
 				</div>
@@ -72,16 +72,28 @@
 			  
 			<div class="col-sm-12">
 			  
-				<form class="needs-validation" th:action="@{/admin/platform/addNewPlatform}" th:object="${platform}" method="post" novalidate>
+				<form class="needs-validation" th:action="@{/admin/platform/updatePlatformDetail}" th:object="${platform}" method="POST" novalidate>
 				
 				  <div class="form-row">
 				  
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend">Platform ID</span>
+				        </div>
+				        <input type="text" class="form-control" id="platformId" name="platformId" placeholder="Platform Id" th:value="${platform.platformId}" aria-describedby="inputGroupPrepend" readonly required>
+				        <div class="invalid-feedback">
+				          Please write a valid platform ID.
+				        </div>
+				      </div>
+				    </div>
+				  
+				    <div class="col-md-4 mb-3">
+				      <div class="input-group">
+				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend">Name</span>
 				        </div>
-				        <input type="text" class="form-control" id="name" name="name" placeholder="EJ: UUT-XXXX-CRXX" aria-describedby="inputGroupPrepend" required>
+				        <input type="text" class="form-control" id="name" name="name" th:value="${platform.name}" placeholder="EJ: UUT-XXXX-CRXX" aria-describedby="inputGroupPrepend" required>
 				        <div class="invalid-feedback">
 				          Please write a valid Name.
 				        </div>
@@ -93,7 +105,7 @@
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend">Station</span>
 				        </div>
-				        <input type="text" class="form-control" id="station" name="station" placeholder="EJ: ROW2-MOD23-UUT1" aria-describedby="inputGroupPrepend" required>
+				        <input type="text" class="form-control" id="station" name="station" th:value="${platform.station}" placeholder="EJ: ROW2-MOD23-UUT1" aria-describedby="inputGroupPrepend" required>
 				        <div class="invalid-feedback">
 				          Please write a valid station.
 				        </div>
@@ -131,7 +143,7 @@
 				    
 				  </div>
 				  
-				  <button class="btn btn-success" type="submit">Add Platform</button>
+				  <button class="btn btn-success" type="submit">Update platform</button>
 				  
 				</form>
 				 
@@ -146,11 +158,11 @@
 			
 			  
 			<div class="col-sm-12">
+			
+				<br/>
 			  
-			    <br/>
-			    
 			     <div  th:if="${error == 'error'}" class="alert alert-danger"><span>Upps!. Something happen!.</span></div>
-			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Platform added successfully!.</span></div>
+			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Platform updated successfully!.</span></div>
 		
 				<br/>
 		

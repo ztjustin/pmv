@@ -8,13 +8,13 @@ public interface PlatformDetailService {
 	
 	public abstract List<PlatformDetail> getAll();
 	
-	public abstract PlatformDetail getOne(int platformDetailId);
+	public abstract PlatformDetail getOne(Long long1);
 	
 	public abstract PlatformDetail addOne(PlatformDetail platformDetail);
 	
-	public abstract void delete(int platformDetailId);
+	public abstract void delete(Long platformDetailId);
 
-	public abstract PlatformDetail getPlatformDetailByPlatformId(int platformId);
+	public abstract PlatformDetail getPlatformDetailByPlatformId(Long platformId);
 
 
 }

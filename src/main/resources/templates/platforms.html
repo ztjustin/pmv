@@ -105,14 +105,20 @@
 								 <td class="align-middle" th:text="${platform.department}"></td>
 								 <td>
 									<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
-									<button  type="button" class="btn btn-default">
+									<button  type="button" class="btn btn-info">
 										<i class="fa fa-eye"></i>
 									</button>
 									</a>
-
+									<a href="#" th:href="@{/admin/platform/updatePlatform?platformId=__${platform.platformId}__}">
+									<button type="button" class="btn btn-success">
+										<i class="fa fa-pencil"></i>
+									</button>
+									</a>
+									<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
 									<button type="button" class="btn btn-danger">
 										<i class="fa fa-trash-o"></i>
 									</button>
+									</a>
 								  </td>
 							</tr>
 						</tbody>

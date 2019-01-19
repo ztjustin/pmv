@@ -25,7 +25,7 @@ public class Platform implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="platform_id", unique = true, nullable = false)
-	private int platformId;
+	private Long platformId;
 	
 	@Column(name = "name", nullable = false, length= 45)
 	private String name;
@@ -34,12 +34,14 @@ public class Platform implements Serializable {
 	private String station;
 	
     @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false, length= 45)
     private StatusPlatform status;
     
     @Enumerated(EnumType.STRING)
+    @Column(name = "department", nullable = false, length= 45)
     private Department department;
 	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy = "platform")
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "platform", optional = true)
     private PlatformDetail platformDetail;
 		
 	@OneToMany(mappedBy="platform")
@@ -61,11 +63,11 @@ public class Platform implements Serializable {
 	}
 
 
-	public int getPlatformId() {
+	public Long getPlatformId() {
 		return platformId;
 	}
 
-	public void setPlatformId(int platformId) {
+	public void setPlatformId(Long platformId) {
 		this.platformId = platformId;
 	}
 
@@ -116,6 +118,6 @@ public class Platform implements Serializable {
 	public void setStation(String station) {
 		this.station = station;
 	}
-
+	
 	
 }
