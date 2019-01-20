@@ -1,6 +1,7 @@
 package com.pmv.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +29,9 @@ public class OperatingSystem implements Serializable {
     
 	@Column(name = "name_System", nullable = false, length= 45)
 	private String nameSystem;
+	
+	@OneToMany(mappedBy="operatingSystem")
+	private List<HardDisk> hardDisks;
 
 	/*GETTERS AND SETTERS*/
 	
@@ -62,6 +67,14 @@ public class OperatingSystem implements Serializable {
 
 	public void setNameSystem(String nameSystem) {
 		this.nameSystem = nameSystem;
+	}
+
+	public List<HardDisk> getHardDisks() {
+		return hardDisks;
+	}
+
+	public void setHardDisks(List<HardDisk> hardDisks) {
+		this.hardDisks = hardDisks;
 	}
 	
 	
