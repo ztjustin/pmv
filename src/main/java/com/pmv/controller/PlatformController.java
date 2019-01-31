@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pmv.entity.Platform;
 import com.pmv.entity.PlatformDetail;
+import com.pmv.service.PchService;
 import com.pmv.service.PlatformDetailService;
 import com.pmv.service.PlatformService;
 
@@ -35,6 +37,10 @@ public class PlatformController {
 	@Autowired
 	@Qualifier("platformDetailServiceImpl")
 	private PlatformDetailService platformDetailServiceImpl;
+	
+	@Autowired
+	@Qualifier("pchServiceImpl")
+	private PchService pchServiceImpl;
 	
 	@GetMapping({"/admin/platformAdd"})
     public ModelAndView AddPlatformView() {
@@ -105,6 +111,7 @@ public class PlatformController {
 			newDetailPlatform.setLastUpdate(localDate);
 			platformDetailServiceImpl.addOne(newDetailPlatform);
 			model.addAttribute("success","success");
+			
 			return "updatePlatform";
 			
 		}catch(Exception ex) {
@@ -114,6 +121,41 @@ public class PlatformController {
 		}
 
     }
+	
+	
+	@PostMapping({"/admin/platform/updatePlatformPch"})
+    public String updatePlatformDetaiPch(@RequestParam(name="platformId",required = false) Long platformId,
+    		@RequestParam(name="pchVisualId",required = false) Long pchVisualId,HttpServletRequest request,Model model) {
+		
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("username",user.getUsername());
+		
+		try {
+			
+			model.addAttribute("platform",platformServiceImpl.getOne(platformId));
+			model.addAttribute("pchs",pchServiceImpl.getAll());
+			
+			PlatformDetail newDetailPlatform = platformDetailServiceImpl.getPlatformDetailByPlatformId(platformId);
+			newDetailPlatform.setPch(pchServiceImpl.getOne(pchVisualId));
+			Date localDate = new Date();
+			newDetailPlatform.setLastUpdate(localDate);
+			platformDetailServiceImpl.addOne(newDetailPlatform);
+			model.addAttribute("success","success");
+			model.addAttribute("pchs",pchServiceImpl.getAll());
+			return "AddPch";
+			
+		}catch(DataIntegrityViolationException ex) {
+			
+			model.addAttribute("duplicate","The pch is located in the platform " + pchServiceImpl.getOne(pchVisualId).getPlatformDetail().getPlatform().getName());
+			LOG.info(ex.toString());
+			return "AddPch";
+		}
+
+    }
+	
+	
+	
+	
 	
 	
 }

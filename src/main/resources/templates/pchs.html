@@ -87,7 +87,12 @@
 							     <td class="align-middle" th:text="${pch.pchName}"></td>
 							     <td class="align-middle" th:text="${pch.qdf}"></td>
 							     <td class="align-middle" th:text="${pch.pchVisualId}"></td>
-							     <td class="align-middle" th:text="${pch.platformDetail.platform.name}"></td>
+							     <td class="align-middle" th:if="${pch.platformDetail != null}" th:text="${pch.platformDetail.platform.name}"></td>
+							     <td class="align-middle" th:if="${pch.platformDetail == null}">									
+							     	<button type="button" class="btn btn-danger">
+										<span>No platform</span>
+									</button>
+							     </td>
 							     <td>
 									<a href="#" th:href="@{/admin/pchEdit?pchId=__${pch.pchId}__}">
 									<button  type="button" class="btn btn-default">

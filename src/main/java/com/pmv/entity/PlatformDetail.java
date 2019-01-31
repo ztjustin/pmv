@@ -16,10 +16,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 
 
 @Entity
-@Table(name="platform_detail")
+@Table(name="platform_detail",uniqueConstraints={@UniqueConstraint(columnNames = {"pch_id"})})
 public class PlatformDetail implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -49,6 +51,7 @@ public class PlatformDetail implements Serializable {
 	@OneToMany(mappedBy="platformDetail")
 	private List<Cpu> cpus;
     
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pch_id", nullable = true)
     private Pch pch;

@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="pch",uniqueConstraints={@UniqueConstraint(columnNames = {"pch_visual_id"})})
@@ -33,6 +35,7 @@ public class Pch implements Serializable{
 	@Column(name = "pch_visual_id", nullable = false, length= 45)
 	private String pchVisualId;
 	
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY,mappedBy = "pch")
     private PlatformDetail platformDetail;
 
@@ -61,13 +64,6 @@ public class Pch implements Serializable{
 		this.pchId = pchId;
 	}
 
-	public String getCpuName() {
-		return pchName;
-	}
-
-	public void setCpuName(String cpuName) {
-		this.pchName = cpuName;
-	}
 
 	public String getQdf() {
 		return qdf;

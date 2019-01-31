@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pmv.entity.Pch;
 import com.pmv.service.PchService;
+import com.pmv.service.PlatformService;
 
 @Controller
 public class PchController {
@@ -28,6 +30,10 @@ public class PchController {
 	@Autowired
 	@Qualifier("pchServiceImpl")
 	private PchService pchServiceImpl;
+	
+	@Autowired
+	@Qualifier("platformServiceImpl")
+	private PlatformService platformServiceImpl;
 	
 	@GetMapping({"/admin/pch"})
     public ModelAndView index() {
@@ -53,6 +59,40 @@ public class PchController {
 
 		return "editPch";
     }
+	
+	/*For ajax method*/
+	@GetMapping({"/admin/getOnePch"})
+	@ResponseBody
+    public Pch getOnePch(@RequestParam(name="pchId",required = false) Long pchId) {
+		
+		Pch pch = new Pch();
+		if(pchId == null  ||  pchServiceImpl.exists(pchId) == false) {
+			 return null;	
+		}else {
+			pch = pchServiceImpl.getOne(pchId);
+		}
+		
+		return pch;
+    }
+	
+	
+	@GetMapping({"/admin/addPchToPlatform"})
+    public String addPch(@RequestParam(name="platformId",required = false) Long platformId,Model model) {
+		
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("username",user.getUsername());
+		
+		if(platformId == null  ||  platformServiceImpl.exists(platformId) == false) {
+			 return "redirect:/admin/pch";	
+		}else {
+
+			model.addAttribute("platform",platformServiceImpl.getOne(platformId));
+			model.addAttribute("pchs",pchServiceImpl.getAll());
+		}
+
+		return "AddPch";
+    }
+	
 	
 	@PostMapping({"/admin/addOrEditPch"})
     public String addOrEditPch(@ModelAttribute(name="Pch") Pch pch,HttpServletRequest request,Model model) {
