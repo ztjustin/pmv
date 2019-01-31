@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
 
-	<title>PMV Application - Add new platform</title>
+	<title>PMV Application - Add new pch</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -57,8 +57,8 @@
 				    
 				  </div>
 				  <div class="card-body">
-				    <h1>New Annotation</h1>
-				    <small>NEW Annotation</small>
+				    <h1><span th:text="${platform.name}"></span></h1>
+				    <small>NEW CPU</small>
 				  </div>
 				  
 				</div>
@@ -73,17 +73,21 @@
 			  
 			<div class="col-sm-12">
 			  	<br/>
-				<form class="needs-validation" th:action="@{/admin/annotation/addNewAnnotation}" th:object="${annotation}" method="post" novalidate>
+				<form class="needs-validation" th:action="@{/admin/cpu/AddPlatformToCpu}" method="post" novalidate>
 				
-				  <input type="hidden" name="_csrf" value="0fe442a5-1bc0-446a-835a-40654916b5da"/>
+				
 				  <div class="form-row">
 				  
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">Platform ID</span>
+				          <span class="input-group-text" id="inputGroupPrepend">Select Visual ID</span>
 				        </div>
-				        <input type="text" class="form-control" id="platformId" name="platform.platformId" th:value="${platform.platformId}" readonly required/>
+					    <select class="custom-select" id="cpuId" name="cpuId" required>
+					      <option value="">Open this select VID</option>
+					      <option th:each="cpu : ${cpus}" th:value="${cpu.cpuId}" th:utext="${cpu.cpuVisualId}"></option>
+					    </select>
+					    <div class="invalid-feedback">Please select status</div>
 				        <div class="invalid-feedback">
 				          Please write a valid platform id.
 				        </div>
@@ -91,44 +95,55 @@
 				    </div>
 				      				        
 				  </div>
+				
 				  
 				  <div class="form-row">
 				  
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">Platform Name</span>
+				          <span class="input-group-text" id="inputGroupPrepend">CPU NAME</span>
 				        </div>
-				        <input type="text" class="form-control" id="platformId" name="platform.platformId" th:value="${platform.name}" disabled required/>
+				        <input type="text" class="form-control" id="cpuName" name="cpuName" readonly required />
 				        <div class="invalid-feedback">
-				          Please write a valid platform name.
+				          Please write a valid CPU name.
+				        </div>
+				      </div>
+				    </div>
+				      				        
+				  </div>				  				
+				
+				  				  		  
+				  <div class="form-row">
+				  
+				    <div class="col-md-4 mb-3">
+				      <div class="input-group">
+				        <div class="input-group-prepend">
+				          <span class="input-group-text" id="inputGroupPrepend">QDF</span>
+				        </div>
+				        <input type="text" class="form-control" id="qdf" name="qdf" readonly required />
+				        <div class="invalid-feedback">
+				          Please write a valid QDF.
 				        </div>
 				      </div>
 				    </div>
 				      				        
 				  </div>
 				  
-				  
 				  <div class="form-row">
 				  
-				  
-				    <div class="col-md-12 mb-3">
-				    
+				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
-				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">Description</span>
-				        </div>
-				        <textarea class="form-control" rows="5" id="description" name="description" required></textarea>
+				        <input type="hidden" class="form-control" id="platformId" name="platformId" th:value="${platform.platformId}" readonly required />
 				        <div class="invalid-feedback">
-				          Please write a valid platform description.
+				          Please write a valid Platform ID.
 				        </div>
 				      </div>
 				    </div>
-				 
-				     
-				  </div>
-				  
-				  <button class="btn btn-success" type="submit">Add Annotation</button>
+				    	   				        
+				  </div>				  
+				  		  
+				  <button class="btn btn-success" type="submit">Add CPU</button>
 				  
 				</form>
 				 
@@ -146,8 +161,8 @@
 			  
 			    <br/>
 			    
-			     <div  th:if="${error == 'error'}" class="alert alert-danger"><span>Upps!. Something happen!.</span></div>
-			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Platform added successfully!.</span></div>
+			     <div  th:if="${duplicate != null}" class="alert alert-danger"> Upps! <span th:text="${duplicate}"></span></div>
+			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>CPU added successfully!.</span></div>
 		
 				<br/>
 		
@@ -170,6 +185,7 @@
     <script th:src="@{/js/jquery.js}"></script>
     <script th:src="@{/js/popper.js}"></script>
     <script th:src="@{/js/bootstrap.js}"></script> 
+    <script th:src="@{/js/cpu.js}"></script>
 	<script>
 	
 	(function() {
@@ -189,7 +205,7 @@
 	    });
 	  }, false);
 	})();
-	
+
 </script>
 </body>
 </html>

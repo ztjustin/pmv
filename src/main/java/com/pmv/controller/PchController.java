@@ -77,7 +77,7 @@ public class PchController {
 	
 	
 	@GetMapping({"/admin/addPchToPlatform"})
-    public String addPch(@RequestParam(name="platformId",required = false) Long platformId,Model model) {
+    public String addPchToPlatform(@RequestParam(name="platformId",required = false) Long platformId,Model model) {
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("username",user.getUsername());
@@ -110,6 +110,8 @@ public class PchController {
 		}
 
     }
+	
+	
 	
 
 }

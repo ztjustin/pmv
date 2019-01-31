@@ -58,6 +58,7 @@
 				  </div>
 				  <div class="card-body">
 				    <h1><span th:text="${platform.name}"></span></h1>
+				    <small>NEW PCH</small>
 				  </div>
 				  
 				</div>
@@ -72,7 +73,7 @@
 			  
 			<div class="col-sm-12">
 			  	<br/>
-				<form class="needs-validation" th:action="@{/admin/platform/updatePlatformPch}" method="post" novalidate>
+				<form class="needs-validation" th:action="@{/admin/platformDetail/AddPlatformToPch}" method="post" novalidate>
 				
 
 				  	  
@@ -83,7 +84,7 @@
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend">Select Visual ID</span>
 				        </div>
-					    <select class="custom-select" id="pchVisualId" name="pchVisualId" required>
+					    <select class="custom-select" id="pchId" name="pchId" required>
 					      <option value="">Open this select VID</option>
 					      <option th:each="pch : ${pchs}" th:value="${pch.pchId}" th:utext="${pch.pchVisualId}"></option>
 					    </select>
@@ -133,10 +134,7 @@
 				  
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
-				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">Platform ID</span>
-				        </div>
-				        <input type="text" class="form-control" id="platformId" name="platformId" th:value="${platform.platformId}" readonly required />
+				        <input type="hidden" class="form-control" id="platformId" name="platformId" th:value="${platform.platformId}" readonly required />
 				        <div class="invalid-feedback">
 				          Please write a valid Platform ID.
 				        </div>
@@ -164,7 +162,7 @@
 			    <br/>
 			    
 			     <div  th:if="${duplicate != null}" class="alert alert-danger"> Upps! <span th:text="${duplicate}"></span></div>
-			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Platform added successfully!.</span></div>
+			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>PCH added successfully!.</span></div>
 		
 				<br/>
 		

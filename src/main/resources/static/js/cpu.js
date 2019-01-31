@@ -1,34 +1,36 @@
 /**
- * Created By Justin Zuniga Torres
+ * Created by Justin Zuniga Torres
  */
+
 
 $( document ).ready(function() {
 
 		
- $("#pchId").change(function(){
+ $("#cpuId").change(function(){
 	 
 	 
-	 var pchId = $('#pchId option:selected').val();
+	 var cpuId = $('#cpuId option:selected').val();
 	 
 	 $.ajax({
 		 
 		    type: "GET",
-		    cache: true,
-		    url: "/admin/getOnePch",
+		    cache: false,
+		    url: "/admin/getOneCpu",
 		    data: { 
-		        'pchId': pchId
+		        'cpuId': cpuId
 		    }, // Adjuntar los campos del formulario enviado.
 
 		    success: function(data)
 		     {
 		      //Actualiza valores por defecto
 		       $("#qdf").val(data.qdf); 
-		       $("#pchName").val(data.pchName);
+		       $("#cpuName").val(data.cpuName);
 		     }
 	});
 	 
 	 
  });
+ 
  
 
 });

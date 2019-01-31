@@ -11,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="cpu")
+@Table(name="cpu",uniqueConstraints={@UniqueConstraint(columnNames = {"cpu_visual_id"})})
 public class Cpu implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -32,8 +35,9 @@ public class Cpu implements Serializable {
 	@Column(name = "cpu_visual_id", nullable = false, length= 45)
 	private String cpuVisualId;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="platform_detail_id", nullable = false)
+	@JoinColumn(name="platform_detail_id", nullable = true)
 	private PlatformDetail platformDetail;
 	
 	/*GETTERS AND SETTERS*/
@@ -90,6 +94,16 @@ public class Cpu implements Serializable {
 	public void setPlatformDetail(PlatformDetail platformDetail) {
 		this.platformDetail = platformDetail;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Cpu [cpuId=" + cpuId + ", cpuName=" + cpuName + ", qdf=" + qdf + ", cpuVisualId=" + cpuVisualId
+				+ ", platformDetail=" + platformDetail + "]";
+	}
+	
+	
+	
 
 	
 }
