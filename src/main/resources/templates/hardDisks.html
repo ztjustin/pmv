@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8"/>
 
-	<title>PMV Application - Sign in</title>
+	<title>PMV Application - Hard Disks</title>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -17,9 +17,9 @@
 
 <body>
 
-	<div class="jumbotron" th:object="${platformDetail}">
+	<div class="jumbotron">
 		<div class="container">
-		
+
 			<!-- Start of Row 1  -->
 			<div class="row">
 			  <div class="col-sm-12">
@@ -30,7 +30,7 @@
 					  </button>
 					  <div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
-					      <li class="nav-item">
+					      <li class="nav-item active">
 					        <a class="nav-link" href="#" th:href="@{/admin/hardDisk}">Hard Disks<span class="sr-only">(current)</span></a>
 					      </li>
 					      <li class="nav-item">
@@ -44,114 +44,106 @@
 					</nav>
 			  </div>
 			</div>
-			
 			<!-- End of Row 1  -->
-			
 			<br/>
-			
 			<!-- Start of Row 2  -->
 			<div class="row">
 
 			  <div class="col-sm-12">
 				<div class="card text-center">
 				  <div class="card-header">
-				    
+
 				  </div>
 				  <div class="card-body">
 				    <h1>Hi!, <span th:text="${username}"></span></h1>
 				  </div>
-				  
+
 				</div>
 			  </div>
-			  			
+
 			</div>
 			<!-- End of Row 2  -->
-			
+
 			<!-- start of Row 3  -->
 			<div class="row">
-			
-			  
+
+
 			<div class="col-sm-12">
-			  	<br/>
+				<br/>
 				<div class="panel panel-default">
 					<div class="panel-heading"></div>
 					<table class="table">
 						<thead>
 							<tr>
+								<th>Serial</th>
+								<th>On Platform</th>
+								<th>Type System</th>
+								<th>Name System</th>
 								<th>Platform</th>
-								<th>Status</th>
-								<th>Department</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="platform : ${platforms}">
-								<td class="align-middle" th:text="${platform.name}"></td>
-										     
-								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='UP'}">
+							<tr th:each="hardDisk : ${hardDisks}">
+							    <td class="align-middle" th:text="${hardDisk.serial}"></td>
+							    <td style="padding-right: 15px;" id="status" th:if="${hardDisk.hold == true}">
 									<button type="button" class="btn btn-success">
 										<i class="fa fa-caret-up"></i>
 									</button>
 								</td>
-								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='DOWN'}">
-									<button type="button" class="btn btn-danger">
+								<td style="padding-right: 15px;" id="status" th:if="${hardDisk.hold == false}">
+									<button type="button" class="btn btn-secondary">
 										<i class="fa fa-caret-down"></i>
 									</button>
 								</td>
-								<td style="padding-right: 15px;" id="status" th:if="${platform.status.toString()=='RUNNING'}">
-									<button type="button" class="btn btn-warning">
-										<i class="fa fa-caret-right"></i>
-									</button>
-								 </td>
-								 <td class="align-middle" th:text="${platform.department}"></td>
-								 <td>
-									<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
-									<button  type="button" class="btn btn-info">
-										<i class="fa fa-eye"></i>
-									</button>
-									</a>
-									<a href="#" th:href="@{/admin/platform/updatePlatform?platformId=__${platform.platformId}__}">
-									<button type="button" class="btn btn-success">
+								<td class="align-middle" th:text="${hardDisk.operatingSystem.typeSystem}"></td>
+							    <td class="align-middle" th:text="${hardDisk.operatingSystem.nameSystem}"></td>
+							    <td class="align-middle" th:text="${hardDisk.platformDetail.platform.name}"></td>
+							     <td>
+									<a href="#" th:href="@{/admin/hardDiskEdit?hardDiskId=__${hardDisk.hardDiskId}__}">
+									<button  type="button" class="btn btn-default">
 										<i class="fa fa-pencil"></i>
 									</button>
 									</a>
-									<a href="#" th:href="@{/admin/platformDetail?platformId=__${platform.platformId}__}">
+
 									<button type="button" class="btn btn-danger">
-										<i class="fa fa-trash-o"></i>
+										<i class="fa fa-trash"></i>
 									</button>
-									</a>
-								  </td>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				
-		
+
+
 			     <div  th:if="${error == 'error'}" class="alert alert-danger"><span>Upps!. Something happen!.</span></div>
 			     <div  th:if="${success == 'success'}" class="alert alert-success"><span>Pch updated successfully!.</span></div>
-		
-		
-		
-				<a href="#" th:href="@{/admin/platformAdd}" class="btn btn-outline-success btn-block">Add new platform</a>
 
-				<br/>
-				
-				<a href="#" class="btn btn-primary btn-block">Log out</a>
-				 
+
+
+				<button class="btn btn-lg btn-primary btn-block" >
+					<span>Add new CPU</span>
+				</button>
+
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+					Logout
+				</button>
+
 			  </div>
-			
+
 			</div>
-			
+
 			<!-- End of Row 3  -->
 
 		</div>
 	</div>
-	
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script th:src="@{/js/jquery.js}"></script>
     <script th:src="@{/js/popper.js}"></script>
     <script th:src="@{/js/bootstrap.js}"></script>
-	
+
 </body>
 </html>
