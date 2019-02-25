@@ -15,4 +15,8 @@ public interface HardDiskService {
 	
 	public abstract void delete(int hardDiskId);
 
+	public abstract boolean exists(Long hardDiskId);
+	
+	public abstract List<HardDisk> getHardDisksByNullPlatform();
+
 }

@@ -38,4 +38,14 @@ public class HardDiskServiceImpl implements HardDiskService {
 		
 	}
 
+	@Override
+	public boolean exists(Long hardDiskId) {
+		return hardDiskJpaRepository.existsById(hardDiskId);
+	}
+
+	@Override
+	public List<HardDisk> getHardDisksByNullPlatform() {
+		return hardDiskJpaRepository.findHardDiskWithNonePlatform();
+	}
+
 }

@@ -58,7 +58,7 @@
 				  </div>
 				  <div class="card-body">
 				    <h1><span th:text="${platform.name}"></span></h1>
-				    <small>NEW CPU</small>
+				    <small>NEW Hard Disk</small>
 				  </div>
 				  
 				</div>
@@ -81,15 +81,15 @@
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">Select Visual ID</span>
+				          <span class="input-group-text" id="inputGroupPrepend">Select Hard Disk</span>
 				        </div>
-					    <select class="custom-select" id="cpuId" name="cpuId" required>
+					    <select class="custom-select" id="hardDiskId" name="hardDiskId" required>
 					      <option value="">Open this select VID</option>
-					      <option th:each="cpu : ${cpus}" th:value="${cpu.cpuId}" th:utext="${cpu.cpuVisualId}"></option>
+					      <option th:each="hardDisk : ${hardDisks}" th:value="${hardDisk.hardDiskId}" th:utext="${hardDisk.serial}"></option>
 					    </select>
-					    <div class="invalid-feedback">Please select status</div>
+					    <div class="invalid-feedback">Please select Hard Disk</div>
 				        <div class="invalid-feedback">
-				          Please write a valid platform id.
+				          Please write a valid Hard Disk.
 				        </div>
 				      </div>
 				    </div>
@@ -102,11 +102,11 @@
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">CPU NAME</span>
+				          <span class="input-group-text" id="inputGroupPrepend">Operating System</span>
 				        </div>
-				        <input type="text" class="form-control" id="cpuName" name="cpuName" readonly required />
+				        <input type="text" class="form-control" id="serial" name="serial" readonly required />
 				        <div class="invalid-feedback">
-				          Please write a valid CPU name.
+				          Please write a valid Serial.
 				        </div>
 				      </div>
 				    </div>
@@ -185,7 +185,7 @@
     <script th:src="@{/js/jquery.js}"></script>
     <script th:src="@{/js/popper.js}"></script>
     <script th:src="@{/js/bootstrap.js}"></script> 
-    <script th:src="@{/js/cpu.js}"></script>
+    <script th:src="@{/js/hardDisk.js}"></script>
 	<script>
 	
 	(function() {

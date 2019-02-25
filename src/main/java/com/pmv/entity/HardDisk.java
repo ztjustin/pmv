@@ -22,7 +22,7 @@ public class HardDisk implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="hard_disk_id", unique = true, nullable = false)
-	private int hardDiskId;
+	private Long hardDiskId;
 	
 	@Column(name = "serial", nullable = false)
 	private String serial;
@@ -54,11 +54,11 @@ public class HardDisk implements Serializable {
 	}
 
 
-	public int getHardDiskId() {
+	public Long getHardDiskId() {
 		return hardDiskId;
 	}
 
-	public void setHardDiskId(int hardDiskId) {
+	public void setHardDiskId(Long hardDiskId) {
 		this.hardDiskId = hardDiskId;
 	}
 

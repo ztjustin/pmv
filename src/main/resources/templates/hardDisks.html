@@ -98,7 +98,12 @@
 								</td>
 								<td class="align-middle" th:text="${hardDisk.operatingSystem.typeSystem}"></td>
 							    <td class="align-middle" th:text="${hardDisk.operatingSystem.nameSystem}"></td>
-							    <td class="align-middle" th:text="${hardDisk.platformDetail.platform.name}"></td>
+							    <td class="align-middle" th:if="${hardDisk.platformDetail != null}" th:text="${hardDisk.platformDetail.platform.name}"></td>
+							    <td class="align-middle" th:if="${hardDisk.platformDetail == null}">
+							     	<button type="button" class="btn btn-danger">
+										<span>No platform</span>
+									</button>
+							    </td>							    
 							     <td>
 									<a href="#" th:href="@{/admin/hardDiskEdit?hardDiskId=__${hardDisk.hardDiskId}__}">
 									<button  type="button" class="btn btn-default">

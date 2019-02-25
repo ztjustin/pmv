@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pmv.entity.Cpu;
 import com.pmv.entity.PlatformDetail;
 import com.pmv.service.CpuService;
 import com.pmv.service.PchService;
