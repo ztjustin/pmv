@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="hard_disk", uniqueConstraints={@UniqueConstraint(columnNames = {"serial"})})
 public class HardDisk implements Serializable {
@@ -30,10 +32,12 @@ public class HardDisk implements Serializable {
 	@Column(name = "hold", nullable = false)
 	private Boolean hold;
 	
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="operating_system_id", nullable=false)
 	private OperatingSystem operatingSystem;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="platform_detail_id", nullable=true)
 	private PlatformDetail platformDetail;

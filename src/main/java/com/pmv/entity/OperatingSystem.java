@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="operating_system")
 public class OperatingSystem implements Serializable {
@@ -30,6 +32,7 @@ public class OperatingSystem implements Serializable {
 	@Column(name = "name_System", nullable = false, length= 45)
 	private String nameSystem;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="operatingSystem")
 	private List<HardDisk> hardDisks;
 
@@ -76,6 +79,8 @@ public class OperatingSystem implements Serializable {
 	public void setHardDisks(List<HardDisk> hardDisks) {
 		this.hardDisks = hardDisks;
 	}
+	
+	
 	
 	
 }

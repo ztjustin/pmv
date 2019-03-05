@@ -23,7 +23,7 @@ public class HardDiskServiceImpl implements HardDiskService {
 	}
 
 	@Override
-	public HardDisk getOne(int hardDiskId) {
+	public HardDisk getOne(Long hardDiskId) {
 		return hardDiskJpaRepository.getOne(hardDiskId);
 	}
 
@@ -33,7 +33,7 @@ public class HardDiskServiceImpl implements HardDiskService {
 	}
 
 	@Override
-	public void delete(int hardDiskId) {
+	public void delete(Long hardDiskId) {
 		hardDiskJpaRepository.deleteById(hardDiskId);
 		
 	}
@@ -46,6 +46,11 @@ public class HardDiskServiceImpl implements HardDiskService {
 	@Override
 	public List<HardDisk> getHardDisksByNullPlatform() {
 		return hardDiskJpaRepository.findHardDiskWithNonePlatform();
+	}
+
+	@Override
+	public void updateOnHoldFalse(Long detailPlatformId) {
+		 hardDiskJpaRepository.updateHoldStatusFalse(detailPlatformId);
 	}
 
 }

@@ -73,7 +73,7 @@
 			  
 			<div class="col-sm-12">
 			  	<br/>
-				<form class="needs-validation" th:action="@{/admin/cpu/AddPlatformToCpu}" method="post" novalidate>
+				<form class="needs-validation" th:action="@{/admin/hardDisk/AddPlatformToHardDisk}" method="post" novalidate>
 				
 				
 				  <div class="form-row">
@@ -104,7 +104,7 @@
 				        <div class="input-group-prepend">
 				          <span class="input-group-text" id="inputGroupPrepend">Operating System</span>
 				        </div>
-				        <input type="text" class="form-control" id="serial" name="serial" readonly required />
+				        <input type="text" class="form-control" id="operatingSystem" name="operatingSystem" readonly required />
 				        <div class="invalid-feedback">
 				          Please write a valid Serial.
 				        </div>
@@ -119,9 +119,9 @@
 				    <div class="col-md-4 mb-3">
 				      <div class="input-group">
 				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="inputGroupPrepend">QDF</span>
+				          <span class="input-group-text" id="inputGroupPrepend">Type System</span>
 				        </div>
-				        <input type="text" class="form-control" id="qdf" name="qdf" readonly required />
+				        <input type="text" class="form-control" id="typeSystem" name="typeSystem" readonly required />
 				        <div class="invalid-feedback">
 				          Please write a valid QDF.
 				        </div>
