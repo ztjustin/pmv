@@ -135,7 +135,7 @@ public class HardDiskController {
 			LOG.info(updateHardDiskHold.getHardDiskId() +" "+updateHardDiskHold.getHold());
 			
 			model.addAttribute("success","success");
-			return "test";
+			return "redirect:/admin/platformDetail?platformId=" + platformDetailId;
 			
 		}catch(Exception ex) {
 			model.addAttribute("error","error");
